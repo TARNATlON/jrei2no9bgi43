@@ -1,3 +1,6 @@
+import ImportHelper from './ImportHelper';
+ImportHelper();
+
 import { FastVarType } from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
 import {
 	DFFlag,

@@ -1,3 +1,6 @@
+import ImportHelper from './ImportHelper';
+ImportHelper();
+
 import { HashingClient } from 'Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
 
 describe('GetSignedData', () => {

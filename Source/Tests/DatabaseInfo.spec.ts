@@ -1,3 +1,6 @@
+import ImportHelper from './ImportHelper';
+ImportHelper();
+
 import { dbInfo } from 'Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
 import { SqlParameter } from 'System/Data/SqlClient/SqlParameter';
 import { SqlDbType } from 'System/Data/SqlDbType';
