@@ -1,5 +1,5 @@
-import { ArgumentNullException } from '../../../../System/ArgumentNullException';
-import { SqlParameter } from '../../../../System/Data/SqlClient/SqlParameter';
+import { ArgumentNullException } from 'System/ArgumentNullException';
+import { SqlParameter } from 'System/Data/SqlClient/SqlParameter';
 
 export class dbInfo {
 	private _ConnectionString: string;

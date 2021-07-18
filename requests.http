@@ -2249,3 +2249,24 @@ Roblox-Proxied-IP: 128.116.123.3
 ###
 
 OPTIONS https://apis.roblox.com/purchase-warning-service/v1/purchase-warnings/acknowledge
+
+###
+
+@Variable_Name = Variable_Value
+
+POST https://netbox.roblox.local/dcim/rear-ports/add/?device=10&return_url=/dcim/devices/10/rear-ports/ HTTP/1.1
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Origin: https://netbox.roblox.local
+Upgrade-Insecure-Requests: 1
+DNT: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4574.2 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: https://netbox.roblox.local/dcim/rear-ports/add/?device=10&return_url=/dcim/devices/10/rear-ports/
+Accept-Language: en,en-US;q=0.9
+Cookie: RBXcb=11; csrftoken=iLenRiHvlzd1Z6IBSPqukgbpsn0ktjUQ9pmcJmXs2YFklPEM2nZzZy1NUwO6rVZM; sessionid=bdos4qp9j74dbfaee3t9jsz66izjlcnx
+Content-Length: 172
+
+csrfmiddlewaretoken=HfIQH1UQqdMGUHOUw4SFoFYqA3MiSDaMyTQFz5aN7CeZgqK5GCrK3XOO2cA4QffI&device=10&name_pattern=Port5&label_pattern=p5&type=fc&positions=5&description=&_create=

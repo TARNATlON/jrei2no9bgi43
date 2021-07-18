@@ -1,8 +1,8 @@
-// import { ArgumentException } from '../../ArgumentException';
-// import { CompareInfo, CompareOptions } from '../../Globalization/CompareInfo';
-// import { CultureInfo } from '../../Globalization/CultureInfo';
-// import { IComparable } from '../../IComparable';
-// import { IXmlSerializable } from '../../Xml/Serialization/IXmlSerializable';
+// import { ArgumentException } from 'System/ArgumentException';
+// import { CompareInfo, CompareOptions } from 'System/Globalization/CompareInfo';
+// import { CultureInfo } from 'System/Globalization/CultureInfo';
+// import { IComparable } from 'System/IComparable';
+// import { IXmlSerializable } from 'System/Xml/Serialization/IXmlSerializable';
 // import { INullable } from './INullable';
 
 export enum SqlCompareOptions {

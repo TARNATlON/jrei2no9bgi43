@@ -16,7 +16,35 @@
 		"stripInternal": true,
 		"removeComments": true,
 		"declaration": true,
-		"declarationDir": "Source/Bin/PDB"
+		"declarationDir": "Source/Bin/PDB",
+		"paths": {
+			"Assemblies*": [
+				"./Source/Assemblies",
+				"./Source/Assemblies*"
+			],
+			"System*": [
+				"./Source/System",
+				"./Source/System*"
+			],
+			"ApiSites*": [
+				"./Source/ApiSites",
+				"./Source/ApiSites*"
+			],
+			"Services*": [
+				"./Source/Services",
+				"./Source/Services*"
+			],
+			"Websites*": [
+				"./Source/Websites",
+				"./Source/Websites*"
+			],
+			"Microsoft*": [
+				"./Source/Microsoft",
+				"./Source/Microsoft*"
+			],
+		}
 	},
-	"include": ["Source/"]
+	"include": [
+		"Source/"
+	]
 }

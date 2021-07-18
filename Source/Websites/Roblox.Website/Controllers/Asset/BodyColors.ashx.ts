@@ -26,7 +26,7 @@
 */
 
 import fs from 'fs';
-import { __baseDirName } from '../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
 
 export default {
 	method: 'all',

@@ -1,6 +1,6 @@
-import { Task } from '../../../../System/Threading/Task';
-import { IDataStoreApiResponse } from '../../../Platform/GamePersistence/Roblox.Platform.GamePersistence/Models/IDataStoreApiResponse';
-import { IDataStoreRequest } from '../../../Platform/GamePersistence/Roblox.Platform.GamePersistence/Models/IDataStoreRequest';
+import { Task } from 'System/Threading/Task';
+import { IDataStoreApiResponse } from 'Assemblies/Platform/GamePersistence/Roblox.Platform.GamePersistence/Models/IDataStoreApiResponse';
+import { IDataStoreRequest } from 'Assemblies/Platform/GamePersistence/Roblox.Platform.GamePersistence/Models/IDataStoreRequest';
 export namespace GamePeristenceRequestProcessor {
 	/**
 	 * Fetches all DataStores for the universe specified in IDataStoreRequest.

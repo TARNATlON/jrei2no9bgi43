@@ -26,8 +26,8 @@
 */
 
 import { Request, Response } from 'express';
-import { GameLaunchRequestProcessor } from '../../../../Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/RequestProcessor';
-import { GameJoinRequest } from '../../../Roblox.GameWebsite/Models/Game/GameJoinRequest'; // TODO Move to Roblox.Web.GameLaunch
+import { GameLaunchRequestProcessor } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/RequestProcessor';
+import { GameJoinRequest } from 'Websites/Roblox.GameWebsite/Models/Game/GameJoinRequest'; // TODO Move to Roblox.Web.GameLaunch
 
 export default {
 	method: 'all',

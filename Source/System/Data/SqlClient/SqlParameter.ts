@@ -1,20 +1,20 @@
 // import { DBNull } from 'System/DBNull';
 // import { NotImplementedException } from 'System/NotImplementedException';
 // import { Type } from 'System/Type';
-// import { ICloneable } from '../../ICloneable';
-// import { DbParameter } from '../Common/DbParameter';
-// import { DataRowVersion } from '../DataRowVersion';
-// import { IDataParameter } from '../IDataParameter';
-// import { IDbDataParameter } from '../IDbDataParameter';
-// import { ParameterDirection } from '../ParameterDirection';
-import { SqlDbType } from '../SqlDbType';
-// import { INullable } from '../SqlTypes/INullable';
-// import { SqlBinary } from '../SqlTypes/SqlBinary';
+// import { ICloneable } from 'System/ICloneable';
+// import { DbParameter } from 'System/Data/Common/DbParameter';
+// import { DataRowVersion } from 'System/Data/DataRowVersion';
+// import { IDataParameter } from 'System/Data/IDataParameter';
+// import { IDbDataParameter } from 'System/Data/IDbDataParameter';
+// import { ParameterDirection } from 'System/Data/ParameterDirection';
+import { SqlDbType } from 'System/Data/SqlDbType';
+// import { INullable } from 'System/Data/SqlTypes/INullable';
+// import { SqlBinary } from 'System/Data/SqlTypes/SqlBinary';
 // import { MetaType } from './MetaType';
 // import { SqlCipherMetadata } from './SqlCipherMetadata';
 // import { SqlCollation } from './SqlCollation';
 
-export class SqlParameter /*  extends DbParameter implements IDbDataParameter, IDataParameter, ICloneable */ {
+export class SqlParameter /* extends DbParameter implements IDbDataParameter, IDataParameter, ICloneable */ {
 	public constructor(parameterName: string, dbType: SqlDbType);
 
 	public constructor(parameterName: string, value: any);

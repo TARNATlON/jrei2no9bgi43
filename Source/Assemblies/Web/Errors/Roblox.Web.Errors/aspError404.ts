@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { InputValidator } from '../../Util/Roblox.Web.Util/Validators/InputValidator';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
 
 export const DefaultAsp404 = (req: Request, res: Response) => {
 	const inputValidatorClient = new InputValidator();

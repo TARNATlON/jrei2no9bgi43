@@ -28,8 +28,8 @@
 */
 
 import { Request, Response } from 'express';
-import { ResponseHelper } from '../../../../Assemblies/Web/Handling/Roblox.Web.Handling/ResponseHelper';
-import { FASTLOGS, FLog, LOGGROUP } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ResponseHelper } from 'Assemblies/Web/Handling/Roblox.Web.Handling/ResponseHelper';
+import { FASTLOGS, FLog, LOGGROUP } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 LOGGROUP('EphemeralCountersV2');
 

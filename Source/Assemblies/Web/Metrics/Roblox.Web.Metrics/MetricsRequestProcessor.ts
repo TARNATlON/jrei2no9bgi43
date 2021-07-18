@@ -1,11 +1,11 @@
 import { Response } from 'express';
-import { MetricsType } from '../../../../ApiSites/Roblox.Metrics.Api/Enumeration/MetricsType';
-import { MeasurementRequest } from '../../../../ApiSites/Roblox.Metrics.Api/MeasurementRequest';
-import { Convert } from '../../../../System/Convert';
-import { CountersClientV2 } from '../../../ApiClients/Roblox.Counters.Client/Implementation/CountersClient';
-import { Task } from '../../../../System/Threading/Task';
-import { ApiEmptyResponseModel } from '../../WebAPI/ApiEmptyResponseModel';
-import { WebParsers } from '../../Parsers/Roblox.Web.Parsers/WebParsers';
+import { MetricsType } from 'ApiSites/Roblox.Metrics.Api/Enumeration/MetricsType';
+import { MeasurementRequest } from 'ApiSites/Roblox.Metrics.Api/MeasurementRequest';
+import { Convert } from 'System/Convert';
+import { CountersClientV2 } from 'Assemblies/ApiClients/Roblox.Counters.Client/Implementation/CountersClient';
+import { Task } from 'System/Threading/Task';
+import { ApiEmptyResponseModel } from 'Assemblies/Web/WebAPI/ApiEmptyResponseModel';
+import { WebParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
 
 export class MetricsRequestProcessor {
 	public async SendMeasurement(request: MeasurementRequest, response?: Response<ApiEmptyResponseModel>) {

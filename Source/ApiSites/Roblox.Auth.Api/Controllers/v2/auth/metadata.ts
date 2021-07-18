@@ -26,8 +26,8 @@
 */
 
 import { Request, Response } from 'express';
-import { DFInt, DYNAMIC_FASTINTVARIABLE } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { MetadataResponse } from '../../../Models/MetadataResponse';
+import { DFInt, DYNAMIC_FASTINTVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { MetadataResponse } from 'ApiSites/Roblox.Auth.Api/Models/MetadataResponse';
 
 DYNAMIC_FASTINTVARIABLE('CookieLawNoticeTimeout', 50000);
 

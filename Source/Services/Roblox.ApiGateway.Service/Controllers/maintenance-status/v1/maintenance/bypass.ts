@@ -32,7 +32,7 @@ import {
 	DYNAMIC_FASTFLAG,
 	DYNAMIC_FASTINT,
 	DYNAMIC_FASTSTRING,
-} from '../../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 DYNAMIC_FASTSTRING('RobloxLabsSecurityToken');
 DYNAMIC_FASTINT('WWWAuthV1MaxAuthTokenAge');

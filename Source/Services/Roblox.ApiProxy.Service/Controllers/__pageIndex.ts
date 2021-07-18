@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { ErrorsClient } from '../../../Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 
 export default {
 	method: 'all',

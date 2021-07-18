@@ -1,4 +1,4 @@
-import { IEnumerator } from '../../../System/Collections/Generic/IEnumerator';
+import { IEnumerator } from 'System/Collections/Generic/IEnumerator';
 import { IPortElement } from './Arbiters/IPortElement';
 import { Handler } from './Handler';
 

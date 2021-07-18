@@ -25,14 +25,14 @@
 	***
 */
 
-import statuses from './codes.json';
+import { Common } from 'Assemblies/Web/Util/Roblox.Web.Util/Common/StatusCodes';
 
 export default {
 	method: 'all',
 	func: async (_req, res) => {
-		res.statusMessage = statuses[_req.query.code || '400'];
+		res.statusMessage = Common.StatusCodes[_req.query.code || '400'];
 		res.status(parseInt(_req.query.code) || 400).send({
-			errors: [{ code: parseInt(_req.query.code) || 400, message: statuses[_req.query.code || '400'] || 'Unknown' }],
+			errors: [{ code: parseInt(_req.query.code) || 400, message: Common.StatusCodes[_req.query.code || '400'] || 'Unknown' }],
 		});
 	},
 };

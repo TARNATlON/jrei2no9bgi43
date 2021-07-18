@@ -1,9 +1,9 @@
-import { SqlDataReader } from '../../../../System/Data/SqlClient/SqlDataReader';
-import { SqlParameter } from '../../../../System/Data/SqlClient/SqlParameter';
-import { SqlDbType } from '../../../../System/Data/SqlDbType';
-import { dbInfo } from '../../../Common/Persistence/Roblox.Common.Persistence/dbInfo';
-import { EntityHelper } from '../../../Data/Roblox.Data/Entities/EntityHelper';
-import { IAccountRoleSet } from '../Types And Interfaces/IAccountRoleSet';
+import { SqlDataReader } from 'System/Data/SqlClient/SqlDataReader';
+import { SqlParameter } from 'System/Data/SqlClient/SqlParameter';
+import { SqlDbType } from 'System/Data/SqlDbType';
+import { dbInfo } from 'Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
+import { EntityHelper } from 'Assemblies/Data/Roblox.Data/Entities/EntityHelper';
+import { IAccountRoleSet } from 'Assemblies/Server Class Library/Roblox Class Library/Types And Interfaces/IAccountRoleSet';
 
 export class AccountDAL {
 	private _ID: long;

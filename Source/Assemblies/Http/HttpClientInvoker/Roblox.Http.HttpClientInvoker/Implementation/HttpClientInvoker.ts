@@ -1,12 +1,12 @@
-import { IClientRequest } from '../Models/IClientRequest';
-import { IClientResponse } from '../Models/IClientResponse';
+import { IClientRequest } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Models/IClientRequest';
+import { IClientResponse } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Models/IClientResponse';
 import query from 'querystring';
-import { HttpRequestMethodEnum } from '../../../Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import Http, { Method } from 'axios';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import WebClient, { Method } from 'axios';
 import SSL from 'https';
-import { BaseURL } from '../../../../Common/Roblox.Common/BaseUrl';
-import { Versioning } from '../../../../Common/Roblox.Common/Versioning';
-import { HttpInvokerException } from '../Exceptions/HttpInvokerException';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { Versioning } from 'Assemblies/Common/Roblox.Common/Versioning';
+import { HttpInvokerException } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Exceptions/HttpInvokerException';
 import { hostname as GetCurrentMachineName, networkInterfaces as GetNetworkInterfaces } from 'os';
 
 // TODO Have 2 variants of this, one with no callback and one with a callback?
@@ -84,7 +84,7 @@ export class HttpClientInvoker {
 					requestMethod = 'PUT';
 					break;
 			}
-			Http.request({
+			WebClient.request({
 				url: requestUrl,
 				method: requestMethod,
 				httpsAgent: new SSL.Agent({ rejectUnauthorized: false }),

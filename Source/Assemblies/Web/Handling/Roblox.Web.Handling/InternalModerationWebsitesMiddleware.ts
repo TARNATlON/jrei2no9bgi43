@@ -26,10 +26,7 @@
 */
 import { NextFunction, Request, Response } from 'express';
 import { RequestHandler } from 'express-serve-static-core';
-import { Account } from '../../../Server Class Library/Roblox Class Library/Business Logic Layer/Account';
-import { FASTLOG5, FLog, LOGGROUP } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-
-LOGGROUP('TheInternalSystem');
+import { Account } from 'Assemblies/Server Class Library/Roblox Class Library/Business Logic Layer/Account';
 
 export const InternalModerationWebsitesMiddleware = ((
 	request: Request<any, any, any, any, any>,
@@ -39,15 +36,6 @@ export const InternalModerationWebsitesMiddleware = ((
 	try {
 		const userAccount = new Account();
 		if (!userAccount) return;
-		FASTLOG5(
-			FLog['TheInternalSystem'],
-			`[FLog::TheInternalSystem] %s REQUEST ON %s://%s%s FROM %s`,
-			request.method.toUpperCase(),
-			request.protocol,
-			request.hostname,
-			request.url,
-			request.headers['user-agent'].toUpperCase(),
-		);
 		response.header({
 			expires: -1,
 			p3p: ' CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"',

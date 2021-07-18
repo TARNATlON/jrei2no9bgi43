@@ -40,8 +40,8 @@ content-type: application/json
 
 import { Request, Response } from 'express-serve-static-core';
 import dotenv from 'dotenv';
-import { __baseDirName } from '../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
-import { FASTFLAG, FFlag } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import { FASTFLAG, FFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 dotenv.config({ path: __baseDirName + '/.env' });
 

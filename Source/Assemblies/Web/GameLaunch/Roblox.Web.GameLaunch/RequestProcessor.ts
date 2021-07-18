@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import { IError } from '../../../../Websites/Roblox.GameWebsite/Models/Game/Error';
-import { GameJoinRequest } from '../../../../Websites/Roblox.GameWebsite/Models/Game/GameJoinRequest';
-import { UserAgentHelper } from '../../../UserAgents/Roblox.UserAgents/UserAgentHelper';
+import { IError } from 'Websites/Roblox.GameWebsite/Models/Game/Error';
+import { GameJoinRequest } from 'Websites/Roblox.GameWebsite/Models/Game/GameJoinRequest';
+import { UserAgentHelper } from 'Assemblies/UserAgents/Roblox.UserAgents/UserAgentHelper';
 import { RequestType } from './Enumeration/RequestType';
 import { ResponseStatus } from './Enumeration/ResponseStatus';
 import { GameLaunchFactory } from './GameLaunchFactory';

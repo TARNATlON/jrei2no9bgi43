@@ -25,7 +25,7 @@
 	***
 */
 
-import { DFFlag } from '../../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { DFFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 export default {
 	method: 'all',

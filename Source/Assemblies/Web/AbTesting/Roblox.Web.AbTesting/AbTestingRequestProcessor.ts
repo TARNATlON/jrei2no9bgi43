@@ -1,10 +1,10 @@
-import { AbTestingClient } from '../../../ApiClients/Roblox.AbTesting.Client/Roblox.AbTesting.Client/Implementation/AbTestingClient';
-import { Task } from '../../../../System/Threading/Task';
-import { IEnrollment } from '../../../Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
-import { IExperiment } from '../../../Platform/AbTesting/Roblox.Platform.AbTesting/IExperiment';
-import { SubjectTypeEnum } from '../../../Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
-import { IBrowserTracker } from '../../../Platform/Membership/Roblox.Platform.Membership/IBrowserTracker';
-import { IUser } from '../../../Platform/Membership/Roblox.Platform.Membership/IUser';
+import { AbTestingClient } from 'Assemblies/ApiClients/Roblox.AbTesting.Client/Roblox.AbTesting.Client/Implementation/AbTestingClient';
+import { Task } from 'System/Threading/Task';
+import { IEnrollment } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
+import { IExperiment } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/IExperiment';
+import { SubjectTypeEnum } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
+import { IBrowserTracker } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IBrowserTracker';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
 
 export namespace AbTestingRequestProcessor {
 	/**

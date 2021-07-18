@@ -38,7 +38,35 @@
 	***
 */
 
-// import Roblox.Api.Helpers.Web.Util.ROBLOX_Starter from './Roblox.Helpers/Roblox.Helpers/Roblox.Web.Util/Roblox.Server.Starter';
+//#region Hook on require() to resolve paths.
+import { isAbsolute, extname, join, dirname } from 'path';
+import { existsSync } from 'fs';
+(function () {
+	const CH_PERIOD = 46;
+	const baseUrl = dirname(process['mainModule'].filename);
+	const existsCache = { d: 0 };
+	delete existsCache.d;
+	const moduleProto = Object.getPrototypeOf(module);
+	const origRequire = moduleProto.require;
+	moduleProto.require = function (request) {
+		let existsPath = existsCache[request];
+		if (existsPath === undefined) {
+			existsPath = '';
+			if (!isAbsolute(request) && request.charCodeAt(0) !== CH_PERIOD) {
+				const ext = extname(request);
+				const basedRequest = join(baseUrl, ext ? request : request + '.js');
+				if (existsSync(basedRequest)) existsPath = basedRequest;
+				else {
+					const basedIndexRequest = join(baseUrl, request, 'index.js');
+					existsPath = existsSync(basedIndexRequest) ? basedIndexRequest : '';
+				}
+			}
+			existsCache[request] = existsPath;
+		}
+		return origRequire.call(this, existsPath || request);
+	};
+})();
+//#endregion
 
 import IServer, { NextFunction, Request, Response } from 'express';
 import { DFFlag, DFLog, DFString, FASTLOG, FASTLOG1F, FASTLOG2, FASTLOGS } from './Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
@@ -82,6 +110,7 @@ import { OnlyCORs } from './Assemblies/Web/Handling/Roblox.Web.Handling/OnlyCORs
 import { Tomcat404 } from './Assemblies/Web/Errors/Roblox.Web.Errors/Tomcat';
 import { KeyValueMapping } from './Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 import ArgsParser from 'args-parser';
+import { LoggingHandler } from './Assemblies/Web/Handling/Roblox.Web.Handling/Logger';
 
 if (process.env.SSLKEYLOGFILE) {
 	const ssl = require('sslkeylog');
@@ -182,92 +211,92 @@ FastLogGlobal.Init();
 		const CSRApiServer = IServer();
 		const CSRWebsiteServer = IServer();
 
-		RobloxWebsiteServer.use(GlobalMiddleware);
-		StaticCDNServer.use(GlobalMiddleware);
-		JavaScriptCDNServer.use(GlobalMiddleware);
-		CSSCDNServer.use(GlobalMiddleware);
-		ImagesCDNServer.use(GlobalMiddleware);
-		SetupCDNServer.use(GlobalMiddleware);
-		ApiProxyServer.use(CookieHandler, ApiServiceIsAliveValidator, ApiProxyHandler);
+		RobloxWebsiteServer.use(LoggingHandler, GlobalMiddleware);
+		StaticCDNServer.use(LoggingHandler, GlobalMiddleware);
+		JavaScriptCDNServer.use(LoggingHandler, GlobalMiddleware);
+		CSSCDNServer.use(LoggingHandler, GlobalMiddleware);
+		ImagesCDNServer.use(LoggingHandler, GlobalMiddleware);
+		SetupCDNServer.use(LoggingHandler, GlobalMiddleware);
+		ApiProxyServer.use(LoggingHandler, CookieHandler, ApiServiceIsAliveValidator, ApiProxyHandler);
 		EphemeralCountersServiceServer.use(EphemeralCountersApi);
-		EphemeralCountersV2Server.use(EphemeralCountersApi);
-		TemporaryImagesCDNServer.use(GlobalMiddleware);
-		VersionCompatibilityServiceServer.use(VCS);
-		ClientSettingsServiceServer.use(RCSS);
-		RobloxGameWebsiteServer.use(GlobalMiddleware);
-		GamePersistenceApiServer.use(GamePersistenceMiddleware);
-		MarketplaceServiceServer.use(GlobalMiddleware);
-		MetricsApiServer.use(GlobalMiddleware);
-		ApiGatewayServer.use(Kestrel);
-		LocaleApiServer.use(GlobalMiddleware);
-		AuthApiServer.use(GlobalMiddleware);
+		EphemeralCountersV2Server.use(LoggingHandler, EphemeralCountersApi);
+		TemporaryImagesCDNServer.use(LoggingHandler, GlobalMiddleware);
+		VersionCompatibilityServiceServer.use(LoggingHandler, VCS);
+		ClientSettingsServiceServer.use(LoggingHandler, RCSS);
+		RobloxGameWebsiteServer.use(LoggingHandler, GlobalMiddleware);
+		GamePersistenceApiServer.use(LoggingHandler, GamePersistenceMiddleware);
+		MarketplaceServiceServer.use(LoggingHandler, GlobalMiddleware);
+		MetricsApiServer.use(LoggingHandler, GlobalMiddleware);
+		ApiGatewayServer.use(LoggingHandler, Kestrel);
+		LocaleApiServer.use(LoggingHandler, GlobalMiddleware);
+		AuthApiServer.use(LoggingHandler, GlobalMiddleware);
 		AbTestingApiServer.use(AbTestingMiddleWare);
-		AbTestingServiceServer.use(AbTestingMiddleWare);
-		UsersApiServer.use(GlobalMiddleware);
-		TwoStepVerficationApiServer.use(GlobalMiddleware);
-		LatencyMeasurementsInternalServiceServer.use(SimulPingMiddleware);
-		ChatApiServer.use(GlobalMiddleware);
-		ContactsApiServer.use(GlobalMiddleware);
-		NotificationsApiServer.use(GlobalMiddleware);
-		AccountSettingsApiServer.use(GlobalMiddleware);
-		AdsApiServer.use(GlobalMiddleware);
-		TradesApiServer.use(GlobalMiddleware);
-		FriendsApiServer.use(GlobalMiddleware);
-		PrivateMessagesApiServer.use(GlobalMiddleware);
-		EconomyApiServer.use(GlobalMiddleware);
-		GamesApiServer.use(GlobalMiddleware);
-		RealTimeApiServer.use(GlobalMiddleware);
-		ThumbnailsApiServer.use(GlobalMiddleware);
-		PresenceApiServer.use(GlobalMiddleware);
-		GroupsApiServer.use(GlobalMiddleware);
-		AccountInformationServer.use(GlobalMiddleware);
-		BadgesApiServer.use(GlobalMiddleware);
-		DeveloperForumWebsiteServer.use(GlobalMiddleware);
-		PremiumFeaturesApiServer.use(GlobalMiddleware);
-		ClientSettingsApiServer.use(GlobalMiddleware);
-		ClientSettingsCDNApiServer.use(GlobalMiddleware);
-		AdConfigurationApiServer.use(GlobalMiddleware);
-		ClientTelementryServiceServer.use(GlobalMiddleware);
-		AssetsApi.use(GlobalMiddleware);
-		AvatarApiServer.use(GlobalMiddleware);
-		BillingApiServer.use(GlobalMiddleware);
-		CatalogApiServer.use(GlobalMiddleware);
-		CdnProvidersApiServer.use(GlobalMiddleware);
-		ChatModerationServiceServer.use(GlobalMiddleware);
-		ContentStoreApiServer.use(GlobalMiddleware);
-		DevelopApiServer.use(GlobalMiddleware);
-		DiscussionsApiServer.use(GlobalMiddleware);
-		EconomyCreatorStatsApiServer.use(GlobalMiddleware);
-		EngagementPayoutsServiceServer.use(GlobalMiddleware);
-		FollowingsApiServer.use(GlobalMiddleware);
-		GameInternationalizationApiServer.use(GlobalMiddleware);
-		GameJoinApiServer.use(GlobalMiddleware);
-		GroupsModerationServiceServer.use(GlobalMiddleware);
-		InventoryApiServer.use(GlobalMiddleware);
-		ItemConfigurationApiService.use(GlobalMiddleware);
-		LocalizationTablesApiServer.use(GlobalMiddleware);
-		PointsApiServer.use(ApiServiceIsAliveValidator, Points);
-		PunishmentsServiceServer.use(GlobalMiddleware);
-		MidasShareApiServer.use(GlobalMiddleware);
-		TextFilterApiServer.use(GlobalMiddleware);
-		ThemesApiServer.use(GlobalMiddleware);
-		ThumbnailsResizerApiServer.use(GlobalMiddleware);
-		TranslationRolesApiServer.use(GlobalMiddleware);
-		TranslationsApiServer.use(GlobalMiddleware);
-		UserModerationServiceServer.use(GlobalMiddleware);
-		PublishApiServer.use(GlobalMiddleware);
-		VoiceApiServer.use(GlobalMiddleware);
-		FilesServiceServer.use(GlobalMiddleware);
-		MetricsInternalWebsiteServer.use(SimulPingMiddleware);
-		AdminWebsiteServer.use(InternalModerationWebsitesMiddleware);
-		CSWebsiteServer.use(InternalModerationWebsitesMiddleware);
-		ComApisCDNServer.use(Kestrel);
-		PointsServiceServer.use(PointsApi);
-		UsersServiceServer.use(UsersApi);
-		DataWebsiteServer.use(DataWebsite);
-		NomadTestServer.use(OnlyCompressionFactory(), OnlyCORs(Hosts['NomadHost']));
-		CSRApiServer.use(OnlyCompressionFactory(), OnlyCORs(Hosts['CSRHost']));
-		CSRWebsiteServer.use(OnlyCompressionFactory());
+		AbTestingServiceServer.use(LoggingHandler, AbTestingMiddleWare);
+		UsersApiServer.use(LoggingHandler, GlobalMiddleware);
+		TwoStepVerficationApiServer.use(LoggingHandler, GlobalMiddleware);
+		LatencyMeasurementsInternalServiceServer.use(LoggingHandler, SimulPingMiddleware);
+		ChatApiServer.use(LoggingHandler, GlobalMiddleware);
+		ContactsApiServer.use(LoggingHandler, GlobalMiddleware);
+		NotificationsApiServer.use(LoggingHandler, GlobalMiddleware);
+		AccountSettingsApiServer.use(LoggingHandler, GlobalMiddleware);
+		AdsApiServer.use(LoggingHandler, GlobalMiddleware);
+		TradesApiServer.use(LoggingHandler, GlobalMiddleware);
+		FriendsApiServer.use(LoggingHandler, GlobalMiddleware);
+		PrivateMessagesApiServer.use(LoggingHandler, GlobalMiddleware);
+		EconomyApiServer.use(LoggingHandler, GlobalMiddleware);
+		GamesApiServer.use(LoggingHandler, GlobalMiddleware);
+		RealTimeApiServer.use(LoggingHandler, GlobalMiddleware);
+		ThumbnailsApiServer.use(LoggingHandler, GlobalMiddleware);
+		PresenceApiServer.use(LoggingHandler, GlobalMiddleware);
+		GroupsApiServer.use(LoggingHandler, GlobalMiddleware);
+		AccountInformationServer.use(LoggingHandler, GlobalMiddleware);
+		BadgesApiServer.use(LoggingHandler, GlobalMiddleware);
+		DeveloperForumWebsiteServer.use(LoggingHandler, GlobalMiddleware);
+		PremiumFeaturesApiServer.use(LoggingHandler, GlobalMiddleware);
+		ClientSettingsApiServer.use(LoggingHandler, GlobalMiddleware);
+		ClientSettingsCDNApiServer.use(LoggingHandler, GlobalMiddleware);
+		AdConfigurationApiServer.use(LoggingHandler, GlobalMiddleware);
+		ClientTelementryServiceServer.use(LoggingHandler, GlobalMiddleware);
+		AssetsApi.use(LoggingHandler, GlobalMiddleware);
+		AvatarApiServer.use(LoggingHandler, GlobalMiddleware);
+		BillingApiServer.use(LoggingHandler, GlobalMiddleware);
+		CatalogApiServer.use(LoggingHandler, GlobalMiddleware);
+		CdnProvidersApiServer.use(LoggingHandler, GlobalMiddleware);
+		ChatModerationServiceServer.use(LoggingHandler, GlobalMiddleware);
+		ContentStoreApiServer.use(LoggingHandler, GlobalMiddleware);
+		DevelopApiServer.use(LoggingHandler, GlobalMiddleware);
+		DiscussionsApiServer.use(LoggingHandler, GlobalMiddleware);
+		EconomyCreatorStatsApiServer.use(LoggingHandler, GlobalMiddleware);
+		EngagementPayoutsServiceServer.use(LoggingHandler, GlobalMiddleware);
+		FollowingsApiServer.use(LoggingHandler, GlobalMiddleware);
+		GameInternationalizationApiServer.use(LoggingHandler, GlobalMiddleware);
+		GameJoinApiServer.use(LoggingHandler, GlobalMiddleware);
+		GroupsModerationServiceServer.use(LoggingHandler, GlobalMiddleware);
+		InventoryApiServer.use(LoggingHandler, GlobalMiddleware);
+		ItemConfigurationApiService.use(LoggingHandler, GlobalMiddleware);
+		LocalizationTablesApiServer.use(LoggingHandler, GlobalMiddleware);
+		PointsApiServer.use(LoggingHandler, ApiServiceIsAliveValidator, Points);
+		PunishmentsServiceServer.use(LoggingHandler, GlobalMiddleware);
+		MidasShareApiServer.use(LoggingHandler, GlobalMiddleware);
+		TextFilterApiServer.use(LoggingHandler, GlobalMiddleware);
+		ThemesApiServer.use(LoggingHandler, GlobalMiddleware);
+		ThumbnailsResizerApiServer.use(LoggingHandler, GlobalMiddleware);
+		TranslationRolesApiServer.use(LoggingHandler, GlobalMiddleware);
+		TranslationsApiServer.use(LoggingHandler, GlobalMiddleware);
+		UserModerationServiceServer.use(LoggingHandler, GlobalMiddleware);
+		PublishApiServer.use(LoggingHandler, GlobalMiddleware);
+		VoiceApiServer.use(LoggingHandler, GlobalMiddleware);
+		FilesServiceServer.use(LoggingHandler, GlobalMiddleware);
+		MetricsInternalWebsiteServer.use(LoggingHandler, SimulPingMiddleware);
+		AdminWebsiteServer.use(LoggingHandler, InternalModerationWebsitesMiddleware);
+		CSWebsiteServer.use(LoggingHandler, InternalModerationWebsitesMiddleware);
+		ComApisCDNServer.use(LoggingHandler, Kestrel);
+		PointsServiceServer.use(LoggingHandler, PointsApi);
+		UsersServiceServer.use(LoggingHandler, UsersApi);
+		DataWebsiteServer.use(LoggingHandler, DataWebsite);
+		NomadTestServer.use(LoggingHandler, OnlyCompressionFactory(), OnlyCORs(Hosts['NomadHost']));
+		CSRApiServer.use(LoggingHandler, OnlyCompressionFactory(), OnlyCORs(Hosts['CSRHost']));
+		CSRWebsiteServer.use(LoggingHandler, OnlyCompressionFactory());
 
 		ApiGatewayServer.engine('html', require('ejs').renderFile);
 		ApiGatewayServer.set('views', __baseDirName + '/TestViews');
@@ -1129,7 +1158,7 @@ FastLogGlobal.Init();
 		CSRApiServer.use(Blank(true));
 		CSRWebsiteServer.use(Tomcat404);
 
-		EphemeralCountersServiceServer.use((error: Error, request: Request, response: Response, next: NextFunction) => {
+		EphemeralCountersServiceServer.use((error: Error, _request: Request, response: Response, _next: NextFunction) => {
 			const StackTrace = stack.parse(error);
 			response.status(500).render('ASPXDetailed500', {
 				pageMeta: {

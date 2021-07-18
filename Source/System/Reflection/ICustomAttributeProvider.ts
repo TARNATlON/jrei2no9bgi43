@@ -1,4 +1,4 @@
-import { Type } from '../Type';
+import { Type } from 'System/Type';
 
 export interface ICustomAttributeProvider {
 	GetCustomAttributes(attributeType: Type, inherit: boolean): any[];

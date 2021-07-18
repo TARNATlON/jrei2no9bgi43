@@ -38,11 +38,11 @@ Host: points.sitetest4.robloxlabs.com
 // Uses ApiService: Yes
 
 import { Request, Response } from 'express';
-import { FASTFLAG, FFlag } from '../../../../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { ICustomError } from '../../../../../../../../Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { PointsRequestProcessor } from '../../../../../../../../Assemblies/Web/Points/Roblox.Web.Points/PointsRequestProcessor';
-import { ErrorsClient } from '../../../../../../../../Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
-import { GetAllTimePointBalanceResponse } from '../../../../../../Models/GetAllTimePointBalanceResponse';
+import { FASTFLAG, FFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { PointsRequestProcessor } from 'Assemblies/Web/Points/Roblox.Web.Points/PointsRequestProcessor';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
+import { GetAllTimePointBalanceResponse } from 'ApiSites/Roblox.Points.Api/Models/GetAllTimePointBalanceResponse';
 
 FASTFLAG('RequireGlobalHTTPS');
 

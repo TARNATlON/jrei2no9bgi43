@@ -1,7 +1,7 @@
 const e = { error: 0, msg: 'Success', result: [] };
 
 import { Request, Response } from 'express';
-import { GUID } from '../../../../../../Assemblies/Web/Util/Roblox.Web.Util/Generators/Guid';
+import { GUID } from 'Assemblies/Web/Util/Roblox.Web.Util/Generators/Guid';
 
 export default {
 	method: 'all',

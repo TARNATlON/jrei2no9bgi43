@@ -1,9 +1,9 @@
-import { BaseURL } from '../../../Common/Roblox.Common/BaseUrl';
-import { HttpClientInvoker } from '../../../Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
-import { HttpRequestMethodEnum } from '../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { Task } from '../../../../System/Threading/Task';
-import { IUser } from '../../../Platform/Membership/Roblox.Platform.Membership/IUser';
-import { IUniverse } from '../../../Platform/Universes/Roblox.Platform.Universes/IUniverse';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { HttpClientInvoker } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { Task } from 'System/Threading/Task';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { IUniverse } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
 
 export class PointsClient {
 	/**

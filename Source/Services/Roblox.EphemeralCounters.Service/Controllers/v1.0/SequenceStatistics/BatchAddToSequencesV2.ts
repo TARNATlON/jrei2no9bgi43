@@ -26,13 +26,13 @@
 */
 
 import { Request, Response } from 'express';
-import { EphemeralCountersService } from '../../../../../Assemblies/ApiServices/Roblox.EphemeralCounters.Service/Roblox.EphemeralCounters.Service/EphemeralCountersService';
-import { ErrorsClient } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
-import { ContentTypeValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
-import { MethodValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { Sequence } from '../../../Sequence';
-import { ISequencesItem } from '../../../ISequencesItem';
-import { HttpRequestMethodEnum } from '../../../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { EphemeralCountersService } from 'Assemblies/ApiServices/Roblox.EphemeralCounters.Service/Roblox.EphemeralCounters.Service/EphemeralCountersService';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
+import { ContentTypeValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { Sequence } from 'Services/Roblox.EphemeralCounters.Service/Sequence';
+import { ISequencesItem } from 'Services/Roblox.EphemeralCounters.Service/ISequencesItem';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
 
 export default {
 	method: 'all',

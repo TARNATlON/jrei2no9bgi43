@@ -1,4 +1,4 @@
-import { ResponseStatus } from '../Enumeration/ResponseStatus';
+import { ResponseStatus } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Enumeration/ResponseStatus';
 import { IGameLaunchRequestBase } from './IGameLaunchRequestBase';
 
 export type ReportDebatableErrorDelegate = (status: ResponseStatus, message: string) => void;

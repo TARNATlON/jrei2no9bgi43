@@ -1,47 +1,27 @@
-/*
-	FileName: router.ts
-	Written By: Nikita Nikolaevich Petko
-	File Type: Module
-	Description: WWW's websocket
-	All commits will be made on behalf of mfd-co to https://github.com/mfd-core/mfdlabs.com
-	***
-	Copyright 2006-2021 ROBLOX
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-	https://www.apache.org/licenses/LICENSE-2.0
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
-	***
-*/
-
 //{"C":"d-9042436C-B,0|z9cD,1|z8Ru,5|z9cE,1","M":[{"H":"UserNotificationHub","M":"notification","A":["FriendshipNotifications","{\"Type\":\"FriendshipRequested\",\"EventArgs\":{\"UserId1\":2377893199,\"UserId2\":158190828},\"SequenceNumber\":49}",0]}]}
 
-import evt from '../../Assemblies/Web/EventManager/Roblox.Web.EventManager/Notifications';
-import a from 'axios';
-import evts from 'events';
+import EventManager from 'Assemblies/Web/EventManager/Roblox.Web.EventManager/Notifications';
+import Http from 'axios';
+import Events from 'events';
 import { IncomingMessage } from 'http';
-import ws from 'ws';
-import { FASTLOG, FASTLOGS, FLog, LOGGROUP } from '../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import Socket from 'ws';
+import { FASTLOG, FASTLOGS, FLog, LOGGROUP } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 LOGGROUP('WebSockets');
 
 export default {
 	dir: '/notifications/connect',
-	func: (socket: ws, req: IncomingMessage): void => {
+	func: (socket: Socket, req: IncomingMessage): void => {
 		let seq = 1;
-		const e = new evts.EventEmitter();
-		evt.subscribe(req.headers.cookie, e);
+		const e = new Events.EventEmitter();
+		EventManager.subscribe(req.headers.cookie, e);
 		e.on('message', (m, uid) => {
 			FASTLOG(
 				FLog['WebSockets'],
 				'[FLog::WebSockets] Message request!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ' + m,
 			);
 			console.log(m, uid);
-			a.get('https://assetgame.roblox.com/Game/GetCurrentUser.ashx', {
+			Http.get('https://assetgame.roblox.com/Game/GetCurrentUser.ashx', {
 				headers: { Cookie: req.headers.cookie },
 			})
 				.then((re2) => {
@@ -84,7 +64,7 @@ export default {
 		});
 		e.on('typing', (uid) => {
 			console.log(uid);
-			a.get('https://assetgame.roblox.com/Game/GetCurrentUser.ashx', {
+			Http.get('https://assetgame.roblox.com/Game/GetCurrentUser.ashx', {
 				headers: { Cookie: req.headers.cookie },
 			})
 				.then((re2) => {
@@ -142,7 +122,7 @@ export default {
 			r.unref();
 			r = undefined;
 			socket.close();
-			evt.unsubscribe(req.headers.cookie);
+			EventManager.unsubscribe(req.headers.cookie);
 		});
 	},
 };

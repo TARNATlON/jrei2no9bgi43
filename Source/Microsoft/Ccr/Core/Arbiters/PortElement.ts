@@ -1,4 +1,4 @@
-import { IPort } from '../IPort';
+import { IPort } from 'Microsoft/Ccr/Core/IPort';
 import { IPortElement, IPortElementGeneric } from './IPortElement';
 
 export class PortElement<T> implements IPortElementGeneric<T>, IPortElement {

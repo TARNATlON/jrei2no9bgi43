@@ -1,4 +1,4 @@
-import { IDisposable } from '../IDisposable';
+import { IDisposable } from 'System/IDisposable';
 import { IDataRecord } from './IDataRecord';
 
 export interface IDataReader extends IDisposable, IDataRecord {

@@ -1,12 +1,12 @@
 import { Response } from 'express';
-import { PointsClient } from '../../../ApiClients/Roblox.Points.Client/Implementation/PointsClient';
-import { Task } from '../../../../System/Threading/Task';
-import { ICustomError } from '../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { IUser } from '../../../Platform/Membership/Roblox.Platform.Membership/IUser';
-import { User } from '../../../Platform/Membership/Roblox.Platform.Membership/User';
-import { IUniverse } from '../../../Platform/Universes/Roblox.Platform.Universes/IUniverse';
-import { Universe } from '../../../Platform/Universes/Roblox.Platform.Universes/Universe';
-import { ErrorsClient } from '../../Util/Roblox.Web.Util/ErrorsClient';
+import { PointsClient } from 'Assemblies/ApiClients/Roblox.Points.Client/Implementation/PointsClient';
+import { Task } from 'System/Threading/Task';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { IUniverse } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
+import { Universe } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/Universe';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 
 export namespace PointsRequestProcessor {
 	/**

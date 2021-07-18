@@ -26,7 +26,7 @@
 */
 
 import { Response } from 'express';
-import { HashingClient } from '../../../../Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
+import { HashingClient } from 'Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
 
 export default {
 	method: 'all',

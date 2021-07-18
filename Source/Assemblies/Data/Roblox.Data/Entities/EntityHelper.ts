@@ -1,8 +1,8 @@
-import { SqlDataReader } from '../../../../System/Data/SqlClient/SqlDataReader';
-import { CacheInfo } from '../../../Caching/Roblox.Caching/CacheInfo';
-import { CacheManager } from '../../../Caching/Roblox.Caching/CacheManager';
-import { ICacheInfo } from '../../../Caching/Roblox.Caching/ICacheInfo';
-import { dbInfo } from '../../../Common/Persistence/Roblox.Common.Persistence/dbInfo';
+import { SqlDataReader } from 'System/Data/SqlClient/SqlDataReader';
+import { CacheInfo } from 'Assemblies/Caching/Roblox.Caching/CacheInfo';
+import { CacheManager } from 'Assemblies/Caching/Roblox.Caching/CacheManager';
+import { ICacheInfo } from 'Assemblies/Caching/Roblox.Caching/ICacheInfo';
+import { dbInfo } from 'Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
 
 export type BuildDAL<T> = (reader: SqlDataReader) => T;
 export type GetIDCollection<TIndex> = () => TIndex[];

@@ -1,4 +1,4 @@
-import { User } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
 
 export default {
 	method: 'all',

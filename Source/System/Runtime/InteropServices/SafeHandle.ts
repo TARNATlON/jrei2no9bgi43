@@ -16,7 +16,7 @@
 ** 
 ===========================================================*/
 
-import { IDisposable } from '../../IDisposable';
+import { IDisposable } from 'System/IDisposable';
 
 /*
   Problems addressed by the SafeHandle class:

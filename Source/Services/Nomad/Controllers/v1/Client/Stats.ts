@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DFInt, DYNAMIC_FASTINTVARIABLE } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { DFInt, DYNAMIC_FASTINTVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 DYNAMIC_FASTINTVARIABLE('CPUTicksConsumedMax', 1000);
 DYNAMIC_FASTINTVARIABLE('UsedMemoryMax', 1.611e9);

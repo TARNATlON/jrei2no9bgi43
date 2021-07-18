@@ -11,7 +11,7 @@ const parser = require('args-parser');
 const { EOL } = require('os');
 
 /**
-	@param {string[]} args */ ((args) => {
+	@param {Record<string, any>} args */ ((args) => {
 	const showHelpMessage = args['h'] === true || args['help'] === true;
 	if (showHelpMessage) {
 		return printHelpMessageAndExit();

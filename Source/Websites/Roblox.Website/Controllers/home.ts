@@ -26,12 +26,8 @@
 */
 
 import { Request, Response } from 'express';
-import { DFFlag, DFString } from '../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { User } from '../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
-
-// import { Roblox } from '../../../../Roblox.Api';
-// import fs from 'fs';
-// import a from 'axios';
+import { DFFlag, DFString } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
 
 export default {
 	method: 'all',
@@ -80,22 +76,5 @@ export default {
 				},
 			},
 		});
-		// a.get(`https://www.roblox.com/home`, { headers: { ...req.headers, host: 'www.roblox.com' } })
-		// 	.then((re) => {
-		// 		const newbody = re.data.split('roblox.com').join('sitetest4.robloxlabs.com');
-		// 		const newheaders = JSON.parse(JSON.stringify(re.headers).split('roblox.com').join('sitetest4.robloxlabs.com'));
-
-		// 		return res.header(newheaders).send(newbody);
-		// 	})
-		// 	.catch((e) => {
-		// 		const newheaders = JSON.parse(JSON.stringify(e.response.headers).split('roblox.com').join('sitetest4.robloxlabs.com'));
-		// 		return res.header(newheaders).status(e.response.status).send(e.response.data);
-		// 	});
-		// let template = fs.readFileSync(
-		// 	Roblox.Api.Constants.RobloxDirectories.__iBaseDirectory + '/InternalCDN/Roblox.UserProfile.html',
-		// 	{ encoding: 'utf-8' },
-		// );
-		// template = template.split('<USERIDHERE>').join(userId.toString());
-		// return res.send(template);
 	},
 };

@@ -1,8 +1,8 @@
-import { IEnumeratorBase } from '../../Collections/IEnumeratorBase';
-import { IDisposable } from '../../IDisposable';
-import { DbDataReader } from '../Common/DbDataReader';
-import { IDataReader } from '../IDataReader';
-import { IDataRecord } from '../IDataRecord';
+import { IEnumeratorBase } from 'System/Collections/IEnumeratorBase';
+import { IDisposable } from 'System/IDisposable';
+import { DbDataReader } from 'System/Data/Common/DbDataReader';
+import { IDataReader } from 'System/Data/IDataReader';
+import { IDataRecord } from 'System/Data/IDataRecord';
 
 export class SqlDataReader extends DbDataReader implements IDataReader, IDisposable, IDataRecord {
 	public GetEnumerator?(): IEnumeratorBase {

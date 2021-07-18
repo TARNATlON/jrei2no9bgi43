@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import { Page } from '../../../Services/Roblox.ClientSettings.Service/Models/Page';
-import { PageRequest } from '../../../Services/Roblox.ClientSettings.Service/Models/PageRequest';
-import { ClientSettings } from '../../Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
+import { Page } from 'Services/Roblox.ClientSettings.Service/Models/Page';
+import { PageRequest } from 'Services/Roblox.ClientSettings.Service/Models/PageRequest';
+import { ClientSettings } from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
 
 export class ClientSettingsHandler {
 	private _response;

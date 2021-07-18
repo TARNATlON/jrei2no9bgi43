@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { HttpRequestMethodEnum } from '../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
 
 export namespace Roblox.ComApis.Api.Controllers {
 	export const ApiUpstreamController = {

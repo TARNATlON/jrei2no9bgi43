@@ -26,13 +26,13 @@
 */
 
 import { NextFunction, Request, Response } from 'express';
-import { Task } from '../../../../../System/Threading/Task';
-import { MetricsRequestProcessor } from '../../../../../Assemblies/Web/Metrics/Roblox.Web.Metrics/MetricsRequestProcessor';
-import { ContentTypeValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
-import { MethodValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { ApiEmptyResponseModel } from '../../../../../Assemblies/Web/WebAPI/ApiEmptyResponseModel';
-import { MeasurementRequest } from '../../../MeasurementRequest';
-import { HttpRequestMethodEnum } from '../../../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { Task } from 'System/Threading/Task';
+import { MetricsRequestProcessor } from 'Assemblies/Web/Metrics/Roblox.Web.Metrics/MetricsRequestProcessor';
+import { ContentTypeValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { ApiEmptyResponseModel } from 'Assemblies/Web/WebAPI/ApiEmptyResponseModel';
+import { MeasurementRequest } from 'ApiSites/Roblox.Metrics.Api/MeasurementRequest';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
 
 export default {
 	method: 'all',

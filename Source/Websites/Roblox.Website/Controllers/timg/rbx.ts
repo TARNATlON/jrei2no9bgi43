@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { CountersClientV2 } from '../../../../Assemblies/ApiClients/Roblox.Counters.Client/Implementation/CountersClient';
-import { Task } from '../../../../System/Threading/Task';
-import { ResponseHelper } from '../../../../Assemblies/Web/Handling/Roblox.Web.Handling/ResponseHelper';
+import { CountersClientV2 } from 'Assemblies/ApiClients/Roblox.Counters.Client/Implementation/CountersClient';
+import { Task } from 'System/Threading/Task';
+import { ResponseHelper } from 'Assemblies/Web/Handling/Roblox.Web.Handling/ResponseHelper';
 
 export default {
 	method: 'all',

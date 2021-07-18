@@ -26,8 +26,8 @@
 */
 
 import { Request, Response } from 'express';
-import { DFInt, DYNAMIC_FASTINTVARIABLE } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { ThumbnailLoadMetadataResponse } from '../../../ThumbnailLoadMetadataResponse';
+import { DFInt, DYNAMIC_FASTINTVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ThumbnailLoadMetadataResponse } from 'ApiSites/Roblox.Metrics.Api/ThumbnailLoadMetadataResponse';
 
 DYNAMIC_FASTINTVARIABLE('MetricsLogRatio', 0.05);
 

@@ -30,6 +30,6 @@ import { Response } from 'express';
 export default {
 	method: 'all',
 	func: async (_request, response: Response) => {
-		return response.send({ ClientSettingsApiUrl: 'http://clientsettingscdn.sitetest4.robloxlabs.com/' });
+		return response.send({ ClientSettingsApiUrl: 'https://clientsettingscdn.sitetest4.robloxlabs.com/' });
 	},
 };

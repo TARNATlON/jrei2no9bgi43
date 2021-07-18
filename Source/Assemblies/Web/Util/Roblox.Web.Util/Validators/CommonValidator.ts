@@ -1,7 +1,12 @@
 import { Response } from 'express';
-import { BaseURL } from '../../../../Common/Roblox.Common/BaseUrl';
-import { __baseDirName } from '../../../../Common/Constants/Roblox.Common.Constants/Directories';
-import { DYNAMIC_FASTFLAGVARIABLE, DYNAMIC_FASTSTRINGVARIABLE, DFFlag, DFString } from '../Logging/FastLog';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import {
+	DYNAMIC_FASTFLAGVARIABLE,
+	DYNAMIC_FASTSTRINGVARIABLE,
+	DFFlag,
+	DFString,
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 import filestream from 'fs';
 
 DYNAMIC_FASTFLAGVARIABLE('DoesTheWorldGetToViewTheSite', false);

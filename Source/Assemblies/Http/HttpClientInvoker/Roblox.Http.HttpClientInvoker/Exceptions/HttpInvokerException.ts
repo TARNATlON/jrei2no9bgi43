@@ -1,4 +1,4 @@
-import { Common } from '../../../../Web/Util/Roblox.Web.Util/Common/StatusCodes';
+import { Common } from 'Assemblies/Web/Util/Roblox.Web.Util/Common/StatusCodes';
 
 export class HttpInvokerException {
 	private Url: String;

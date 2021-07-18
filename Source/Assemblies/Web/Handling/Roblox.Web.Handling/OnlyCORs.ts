@@ -1,5 +1,5 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { OriginMasterDescriptive } from '../../Util/Roblox.Web.Util/OriginMaster';
+import { OriginMasterDescriptive } from 'Assemblies/Web/Util/Roblox.Web.Util/OriginMaster';
 
 export const OnlyCORs = (host: string) =>
 	((request: Request, response: Response, resumeFunction: NextFunction) => {

@@ -26,9 +26,9 @@
 */
 
 import { Request, Response } from 'express';
-import { DFFlag, DFString } from '../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { User } from '../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
-import { KeyValueMapping } from '../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { DFFlag, DFString } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
 export default {
 	method: 'all',

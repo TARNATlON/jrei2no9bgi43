@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 DYNAMIC_FASTSTRINGVARIABLE('CharacterAppearranceTestString', '');
 

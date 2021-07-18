@@ -1,8 +1,8 @@
-import { SqlDataReader } from '../../../../../System/Data/SqlClient/SqlDataReader';
-import { SqlParameter } from '../../../../../System/Data/SqlClient/SqlParameter';
-import { SqlDbType } from '../../../../../System/Data/SqlDbType';
-import { dbInfo } from '../../../../Common/Persistence/Roblox.Common.Persistence/dbInfo';
-import { EntityHelper } from '../../../../Data/Roblox.Data/Entities/EntityHelper';
+import { SqlDataReader } from 'System/Data/SqlClient/SqlDataReader';
+import { SqlParameter } from 'System/Data/SqlClient/SqlParameter';
+import { SqlDbType } from 'System/Data/SqlDbType';
+import { dbInfo } from 'Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
+import { EntityHelper } from 'Assemblies/Data/Roblox.Data/Entities/EntityHelper';
 
 export class CounterDAL {
 	private _ID: number;

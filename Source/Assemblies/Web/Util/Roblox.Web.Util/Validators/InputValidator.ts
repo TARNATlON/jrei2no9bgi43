@@ -1,6 +1,6 @@
-import { Profanity } from '../../../../DataV2/Filtering/Roblox.DataV2.Filtering/Profanity';
-import { Whitespace } from '../../../../DataV2/Filtering/Roblox.DataV2.Filtering/Whitespace';
-import { PredicateLoaders } from '../Factories/PredicateLoaders';
+import { Profanity } from 'Assemblies/DataV2/Filtering/Roblox.DataV2.Filtering/Profanity';
+import { Whitespace } from 'Assemblies/DataV2/Filtering/Roblox.DataV2.Filtering/Whitespace';
+import { PredicateLoaders } from 'Assemblies/Web/Util/Roblox.Web.Util/Factories/PredicateLoaders';
 
 export class InputValidator {
 	public CheckDoesNumberStringIncludeAlphaChars(input: string | number) {

@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
-import { AssetIdListModel } from '../../../../ApiSites/Roblox.Avatar.Api/Models/AssetIdListModel';
-import { AvatarFetchModel } from '../../../../ApiSites/Roblox.Avatar.Api/Models/AvatarFetchModel';
-import { AvatarFetchRequest } from '../../../../ApiSites/Roblox.Avatar.Api/Models/AvatarFetchRequest';
-import { AvatarFetchResponseModel } from '../../../../Services/Roblox.ApiProxy.Service/Models/AvatarFetchResponseModel';
-import { AvatarBodyColorsModel } from '../../../../Services/Roblox.ApiProxy.Service/Models/AvtarBodyColorsModel';
-import { GetByUserNameResponse } from '../../../../Services/Roblox.ApiProxy.Service/Models/GetByUserNameResponse';
-import { Convert } from '../../../../System/Convert';
-import { Task } from '../../../../System/Threading/Task';
-import { BodyColorsRequest } from '../../../../Websites/Roblox.GameWebsite/Models/Game/BodyColorsRequest';
-import { AvatarAccoutrementsRequest } from '../../../../Websites/Roblox.GameWebsite/Models/Game/IAvatarAccoutrementsRequest';
-import { BaseURL } from '../../../Common/Roblox.Common/BaseUrl';
-import { HttpRequestMethodEnum } from '../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { HttpClientInvoker } from '../../../Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
-import { CachePolicy, IClientRequest } from '../../../Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Models/IClientRequest';
+import { AssetIdListModel } from 'ApiSites/Roblox.Avatar.Api/Models/AssetIdListModel';
+import { AvatarFetchModel } from 'ApiSites/Roblox.Avatar.Api/Models/AvatarFetchModel';
+import { AvatarFetchRequest } from 'ApiSites/Roblox.Avatar.Api/Models/AvatarFetchRequest';
+import { AvatarFetchResponseModel } from 'Services/Roblox.ApiProxy.Service/Models/AvatarFetchResponseModel';
+import { AvatarBodyColorsModel } from 'Services/Roblox.ApiProxy.Service/Models/AvtarBodyColorsModel';
+import { GetByUserNameResponse } from 'Services/Roblox.ApiProxy.Service/Models/GetByUserNameResponse';
+import { Convert } from 'System/Convert';
+import { Task } from 'System/Threading/Task';
+import { BodyColorsRequest } from 'Websites/Roblox.GameWebsite/Models/Game/BodyColorsRequest';
+import { AvatarAccoutrementsRequest } from 'Websites/Roblox.GameWebsite/Models/Game/IAvatarAccoutrementsRequest';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { HttpClientInvoker } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
+import { CachePolicy, IClientRequest } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Models/IClientRequest';
 import {
 	DFLog,
 	DYNAMIC_LOGVARIABLE,
@@ -22,8 +22,8 @@ import {
 	FASTLOG3,
 	FASTLOGNOFILTER,
 	FASTLOGS,
-} from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { KeyValueMapping } from '../../../Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
 DYNAMIC_LOGVARIABLE('CacheStore', 7);
 DYNAMIC_LOGVARIABLE('RoundRobinRunThrough', 7);
@@ -64,7 +64,34 @@ export class AvatarRequestProcessor {
 	private static AVATAR_DEFAULT_COLORS = (userID: long, allowUseOfSSL: bool = false) =>
 		BaseURL.ConstructServicePathFromSubDomain('assetgame', '/Asset/BodyColors.ashx', { userID }, allowUseOfSSL, false, true);
 
-	private static DEFAULT_AVATAR_FETCH_MODEL: AvatarFetchModel = {
+	private static FUNNY_AVATAR_FETCH_MODEL: AvatarFetchModel = {
+		resolvedAvatarType: 'R15',
+		equippedGearVersionIds: [],
+		backpackGearVersionIds: [],
+		assetAndAssetTypeIds: [
+			{ assetId: 4487955592, assetTypeId: 43 },
+			{ assetId: 5917459717, assetTypeId: 18 },
+			{ assetId: 5617784770, assetTypeId: 2 },
+			{ assetId: 6372437047, assetTypeId: 12 },
+		],
+		animationAssetIds: { climb: 837013990, run: 837009922, jump: 619528412, fall: 619527817, idle: 1018553897, walk: 754636298 },
+		bodyColors: {
+			HeadColor: 1,
+			TorsoColor: 1,
+			RightArmColor: 1,
+			LeftArmColor: 1,
+			RightLegColor: 1,
+			LeftLegColor: 1,
+		},
+		scales: { height: 0.5, width: 3.0, head: 1.0, depth: 1.0, proportion: 0.0, bodyType: 0.05 },
+		emotes: [
+			{ assetId: 3576686446, assetName: 'Hello', position: 1 },
+			{ assetId: 3360689775, assetName: 'Salute', position: 2 },
+			{ assetId: 3360692915, assetName: 'Tilt', position: 3 },
+		],
+	};
+
+	private static DEFAULT_AVATAR_FETCH_MODEL: AvatarFetchModel = AvatarRequestProcessor.FUNNY_AVATAR_FETCH_MODEL; /*{
 		resolvedAvatarType: 'R15',
 		equippedGearVersionIds: [],
 		backpackGearVersionIds: [],
@@ -88,7 +115,7 @@ export class AvatarRequestProcessor {
 			{ assetId: 3360689775, assetName: 'Salute', position: 2 },
 			{ assetId: 3360692915, assetName: 'Tilt', position: 3 },
 		],
-	};
+	};*/
 
 	private static DEFAULT_AVATAR_FETCH_RESPONSE_MODEL: AvatarFetchResponseModel = {
 		ResolvedAvatarType: 'R15',
@@ -162,6 +189,7 @@ export class AvatarRequestProcessor {
 	}
 
 	public async GetAvatarFetchResponseAsync(userID: long, userName: string, placeID: long) {
+		if (userID === -1) return this._response.send(AvatarRequestProcessor.FUNNY_AVATAR_FETCH_MODEL);
 		if (typeof userName === 'string') userName = userName.toLowerCase().trim();
 		this.UpdateConfiguredMutablesV2(userID, userName, placeID);
 		await this.TryUpdateUserIDByUserName();

@@ -1,5 +1,5 @@
-import { FilesClient } from '../../../ApiClients/Roblox.Files.Client/Roblox.Files.Client/Implementation/FilesClient';
-import { IAssetRequestItem } from '../../../Platform/Assets/Roblox.Platform.Assets/IAssetRequestItem';
+import { FilesClient } from 'Assemblies/ApiClients/Roblox.Files.Client/Roblox.Files.Client/Implementation/FilesClient';
+import { IAssetRequestItem } from 'Assemblies/Platform/Assets/Roblox.Platform.Assets/IAssetRequestItem';
 
 export namespace AssetRequestProcessor {
 	export async function GetUri(

@@ -5,7 +5,7 @@
 // ==--==
 // <OWNER>WESU</OWNER>
 
-import { Guid } from '../Guid';
+import { Guid } from 'System/Guid';
 
 export interface _ParameterInfo {
 	GetTypeInfoCount(): [uint];

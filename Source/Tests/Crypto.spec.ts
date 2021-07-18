@@ -1,4 +1,4 @@
-import { HashingClient } from '../Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
+import { HashingClient } from 'Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
 
 describe('GetSignedData', () => {
 	it('Should return a SHA-1 Base64 encoded hash.', () => {

@@ -26,6 +26,12 @@ export class Convert {
 	public static ToBoolean(value: any, def?: bool): bool {
 		if (typeof value === 'boolean') return value;
 
+		const valueAsNumber = parseInt(value);
+
+		if (!isNaN(valueAsNumber)) {
+			return valueAsNumber > 0;
+		}
+
 		const defaultReturn = def !== undefined && def !== null ? def : false;
 		value = typeof value === 'string' ? value.toLowerCase() : null;
 		if (value === null) return defaultReturn;

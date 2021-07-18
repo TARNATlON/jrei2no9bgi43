@@ -1,6 +1,6 @@
-import { Task } from '../../../../System/Threading/Task';
-import { DFLog, FASTLOGS } from '../../../Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { PartialDatabase } from '../Implementation/PartialDatabase';
+import { Task } from 'System/Threading/Task';
+import { DFLog, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { PartialDatabase } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Implementation/PartialDatabase';
 
 export class EntityBase {
 	protected static isConnected: boolean;

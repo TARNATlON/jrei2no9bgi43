@@ -26,9 +26,9 @@
 */
 
 import { Request, Response } from 'express';
-import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { DateTimeConverter } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Converters/DateTimeConverter';
-import { HashingClient } from '../../../../Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
+import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { DateTimeConverter } from 'Assemblies/Web/Util/Roblox.Web.Util/Converters/DateTimeConverter';
+import { HashingClient } from 'Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
 
 DYNAMIC_FASTSTRINGVARIABLE('CharacterAppearanceUrl', 'http://assetgame.sitetest4.robloxlabs.com/Asset/CharacterFetch.ashx');
 

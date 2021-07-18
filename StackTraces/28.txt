@@ -1,0 +1,129 @@
+
+Error Detail: ApiClient Assets exception:
+Url = https://assets.api.sitetest2.robloxlabs.com/v1/AssetGenres/GetAllAssetGenres
+StatusCode = InternalServerError
+StatusDescription = Internal Server Error
+ResponseText = <!DOCTYPE html>
+<html>
+    <head>
+        <title>Runtime Error</title>
+        <meta name=\"viewport\" content=\"width=device-width\" />
+        <style>
+         body {font-family:\"Verdana\";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:\"Consolas\",\"Lucida Console\",Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+         @media screen and (max-width: 639px) {
+          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }
+         }
+         @media screen and (max-width: 479px) {
+          pre { width: 280px; }
+         }
+        </style>
+    </head>
+
+    <body bgcolor=\"white\">
+
+            <span><H1>Server Error in \u0027/\u0027 Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Runtime Error</i> </h2></span>
+
+            <font face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">
+
+            <b> Description: </b>An application error occurred on the server. The current custom error settings for this application prevent the details of the application error from being viewed remotely (for security reasons). It could, however, be viewed by browsers running on the local server machine.
+            <br><br>
+
+            <b>Details:</b> To enable the details of this specific error message to be viewable on remote machines, please create a &lt;customErrors&gt; tag within a &quot;web.config&quot; configuration file located in the root directory of the current web application. This &lt;customErrors&gt; tag should then have its &quot;mode&quot; attribute set to &quot;Off&quot;.<br><br>
+
+            <table width=100% bgcolor=\"#ffffcc\">
+               <tr>
+                  <td>
+                      <code><pre>
+
+&lt;!-- Web.Config Configuration File --&gt;
+
+&lt;configuration&gt;
+    &lt;system.web&gt;
+        &lt;customErrors mode=&quot;Off&quot;/&gt;
+    &lt;/system.web&gt;
+&lt;/configuration&gt;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b>Notes:</b> The current error page you are seeing can be replaced by a custom error page by modifying the &quot;defaultRedirect&quot; attribute of the application&#39;s &lt;customErrors&gt; configuration tag to point to a custom error page URL.<br><br>
+
+            <table width=100% bgcolor=\"#ffffcc\">
+               <tr>
+                  <td>
+                      <code><pre>
+
+&lt;!-- Web.Config Configuration File --&gt;
+
+&lt;configuration&gt;
+    &lt;system.web&gt;
+        &lt;customErrors mode=&quot;RemoteOnly&quot; defaultRedirect=&quot;mycustompage.htm&quot;/&gt;
+    &lt;/system.web&gt;
+&lt;/configuration&gt;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+    </body>
+</html>
+
+
+Inner Exception: System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.WebClient.UploadDataInternal(Uri address, String method, Byte[] data, WebRequest& request)
+   at System.Net.WebClient.UploadData(Uri address, String method, Byte[] data)
+   at Roblox.ApiClientBase.ApiClientBase.DoPostOrPut(WebClient webClient, String httpMethod, String requestUrl, IEnumerable`1 formParameters, String rawPostData, IEnumerable`1 multipartFormData)
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName)
+Exception Stack Trace:    at Roblox.ApiClientBase.ApiClientBase.ThrowConvertedException(WebException ex, String actionName, Nullable`1 statusCode, String statusDescription, String actionPath)
+   at Roblox.ApiClientBase.GuardedApiClientBase.OnRequestFailed(WebException ex, Int64 requestId, String actionName, Nullable`1 statusCode, String statusDescription, String actionPath)
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName)
+   at Roblox.ApiClientBase.GuardedApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName)
+   at Roblox.Assets.Client.AssetsClient.<.ctor>b__18_0() in C:\\buildAgent\\work\\73cbbb52b9c062db\\Assemblies\\ApiClients\\Roblox.Assets.Client\\Roblox.Assets.Client\\Implementation\\AssetsClient.cs:line 86
+   at Roblox.Assets.Client.SimpleTtlClientCache`1.GetInstance(Func`1 getInstance) in C:\\buildAgent\\work\\73cbbb52b9c062db\\Assemblies\\ApiClients\\Roblox.Assets.Client\\Roblox.Assets.Client\\Implementation\\SimpleTtlClientCache.cs:line 55
+   at Roblox.Website.WebCode.Place.PlaceDetailsModelLoader.GetAssetGenreIdDisplayName(Asset asset) in C:\\buildAgent\\work\\73cbbb52b9c062db\\web\\RobloxWebSite\\WebCode\\Place\\PlaceDetailsModelLoader.cs:line 366
+   at Roblox.Website.WebCode.Place.PlaceDetailsModelLoader.LoadModel(IUser authenticatedUser, Int64 assetId, String userAgent) in C:\\buildAgent\\work\\73cbbb52b9c062db\\web\\RobloxWebSite\\WebCode\\Place\\PlaceDetailsModelLoader.cs:line 215
+   at Roblox.Website.Controllers.PlacesController.GetDetails(Int64 assetId) in C:\\buildAgent\\work\\73cbbb52b9c062db\\web\\RobloxWebSite\\Controllers\\PlacesController.cs:line 1734
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+Exception Source: Roblox.ApiClientBase
+Exception TargetSite: Void ThrowConvertedException(System.Net.WebException, System.String, System.Nullable`1[System.Net.HttpStatusCode], System.String, System.String)
+Exception Data: System.Collections.ListDictionaryInternal

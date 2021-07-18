@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import { ClientSettingsHandler } from '../../../../Assemblies/ApiServices/Roblox.ClientSettings.Handler/ClientSettingsHandler';
-import { KeyValueMapping } from '../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { HttpRequestMethodEnum } from '../../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { ApiKeyValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
-import { MethodValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { Convert } from '../../../../System/Convert';
-import { Page } from '../../Models/Page';
-import { PageRequest } from '../../Models/PageRequest';
+import { ClientSettingsHandler } from 'Assemblies/ApiServices/Roblox.ClientSettings.Handler/ClientSettingsHandler';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { ApiKeyValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { Convert } from 'System/Convert';
+import { Page } from 'Services/Roblox.ClientSettings.Service/Models/Page';
+import { PageRequest } from 'Services/Roblox.ClientSettings.Service/Models/PageRequest';
 
 export default {
 	method: 'all',

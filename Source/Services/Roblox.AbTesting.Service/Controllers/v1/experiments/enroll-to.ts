@@ -53,7 +53,7 @@ content-type: application/json
 
 import { NextFunction } from 'express';
 import { Request, Response } from 'express-serve-static-core';
-import { AbTestingService } from '../../../../../Assemblies/ApiServices/Roblox.AbTesting.Service/Roblox.AbTesting.Service/Implementation/AbTestingService';
+import { AbTestingService } from 'Assemblies/ApiServices/Roblox.AbTesting.Service/Roblox.AbTesting.Service/Implementation/AbTestingService';
 
 export default {
 	method: 'All',

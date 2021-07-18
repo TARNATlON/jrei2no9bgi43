@@ -1,4 +1,4 @@
-import { IPort } from '../IPort';
+import { IPort } from 'Microsoft/Ccr/Core/IPort';
 
 export interface IPortElement {
 	Owner: IPort;

@@ -28,8 +28,8 @@
 
 import filestream from 'fs';
 import crypto from 'crypto';
-import { DFFlag, DYNAMIC_FASTFLAGVARIABLE, FASTFLAG, FFlag } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { __baseDirName } from '../../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import { DFFlag, DYNAMIC_FASTFLAGVARIABLE, FASTFLAG, FFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
 
 FASTFLAG('RequireGlobalHTTPS');
 DYNAMIC_FASTFLAGVARIABLE('IsAuthV2Enabled', false);

@@ -1,8 +1,8 @@
-import { BaseURL } from '../../../Common/Roblox.Common/BaseUrl';
-import { HttpClientInvoker } from '../../../Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
-import { HttpRequestMethodEnum } from '../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { Task } from '../../../../System/Threading/Task';
-import { Sequence } from '../../../../Services/Roblox.EphemeralCounters.Service/Sequence';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { HttpClientInvoker } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { Task } from 'System/Threading/Task';
+import { Sequence } from 'Services/Roblox.EphemeralCounters.Service/Sequence';
 
 export class CountersClientV2 {
 	public static async IncrementCounter(Name: string, Amount: number = 1): Task<[boolean, number, any, Error]> {

@@ -1,5 +1,5 @@
-import { EntityBase } from '../../../Mssql/Roblox.Mssql.PartialDatabase/Base/EntityBase';
-import { FASTLOGS, FLog } from '../../../Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { EntityBase } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Base/EntityBase';
+import { FASTLOGS, FLog } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 import { IReport } from './IReport';
 
 export class Report extends EntityBase implements IReport {

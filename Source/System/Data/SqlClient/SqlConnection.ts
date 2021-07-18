@@ -1,6 +1,4 @@
-// import { ICloneable } from '../../ICloneable';
-
-export class SqlConnection /* extends DbConnection */ /* implements ICloneable */ {
+export class SqlConnection {
 	public Clone() {}
 	public Open() {
 		try {

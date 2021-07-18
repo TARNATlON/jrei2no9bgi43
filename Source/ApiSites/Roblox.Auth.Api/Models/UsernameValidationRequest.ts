@@ -1,4 +1,4 @@
-import { UsernameValidationContext } from '../Enumerations/UsernameValidationContext';
+import { UsernameValidationContext } from 'ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationContext';
 
 export interface IUsernameValidationRequest {
 	/**

@@ -6,8 +6,8 @@
 // <OWNER>Microsoft</OWNER>
 //
 
-import { Guid } from '../Guid';
-import { Type } from '../Type';
+import { Guid } from 'System/Guid';
+import { Type } from 'System/Type';
 import { _ParameterInfo } from './ComInterfaces';
 import { ICustomAttributeProvider } from './ICustomAttributeProvider';
 

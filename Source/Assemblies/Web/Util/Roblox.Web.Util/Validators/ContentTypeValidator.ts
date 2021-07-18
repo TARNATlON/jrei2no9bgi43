@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { ICustomError } from '../../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { ErrorsClient } from '../ErrorsClient';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 import { IServiceValidatorBase } from './Interfaces/IServiceValidatorBase';
 
 export class ContentTypeValidator<TResponse extends Response> implements IServiceValidatorBase<string, bool> {

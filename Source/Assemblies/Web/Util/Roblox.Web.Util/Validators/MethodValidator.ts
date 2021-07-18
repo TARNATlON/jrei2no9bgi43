@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import { HttpRequestMethodEnum } from '../../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { ICustomError } from '../../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { ErrorsClient } from '../ErrorsClient';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 import { IServiceValidatorBase } from './Interfaces/IServiceValidatorBase';
 
 export class MethodValidator<TResponse extends Response> implements IServiceValidatorBase<string, HttpRequestMethodEnum> {

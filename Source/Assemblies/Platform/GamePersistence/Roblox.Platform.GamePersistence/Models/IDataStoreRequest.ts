@@ -1,5 +1,5 @@
-import { IUser } from '../../../Membership/Roblox.Platform.Membership/IUser';
-import { IUniverse } from '../../../Universes/Roblox.Platform.Universes/IUniverse';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { IUniverse } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
 
 export interface IDataStoreRequest {
 	/*IUniverse*/ Universe: IUniverse;

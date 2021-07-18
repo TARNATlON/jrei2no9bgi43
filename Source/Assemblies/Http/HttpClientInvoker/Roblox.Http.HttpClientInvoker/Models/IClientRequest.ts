@@ -1,4 +1,4 @@
-import { HttpRequestMethodEnum } from '../../../Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
 import { IHttpHeaders } from './JSON/IHttpHeaders';
 import { IHttpQueries } from './JSON/IHttpQueries';
 

@@ -1,9 +1,9 @@
-import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from '../../../Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { Task } from '../../../../System/Threading/Task';
-import { PartialDatabase } from '../../../Mssql/Roblox.Mssql.PartialDatabase/Implementation/PartialDatabase';
-import { PartialDatabaseConditionType } from '../../../Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
-import { IEmail } from '../../Credentials/Roblox.Platform.Credentials/IEmail';
-import { IPassword } from '../../Credentials/Roblox.Platform.Credentials/IPassword';
+import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { Task } from 'System/Threading/Task';
+import { PartialDatabase } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Implementation/PartialDatabase';
+import { PartialDatabaseConditionType } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
+import { IEmail } from 'Assemblies/Platform/Credentials/Roblox.Platform.Credentials/IEmail';
+import { IPassword } from 'Assemblies/Platform/Credentials/Roblox.Platform.Credentials/IPassword';
 import { ISession } from './ISession';
 import { IUser } from './IUser';
 import { UserModelBuildersClubMembershipTypeEnum } from './UserModelBuildersClubMembershipTypeEnum';

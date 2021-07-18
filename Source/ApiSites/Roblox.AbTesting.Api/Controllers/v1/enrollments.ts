@@ -67,12 +67,12 @@ origin: Roblox.Tests.Origins.SecureAbTestingOrigin
 // this doesn't mean that the experiment doesn't exist, it could be in Roblox.Data.AbTesting.Experiments.SharedExperiments.
 
 import { Request, Response } from 'express-serve-static-core';
-import { SubjectTypeEnum } from '../../../../Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
-import { IUser } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
-import { IBrowserTracker } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/IBrowserTracker';
-import { AbTestingRequestProcessor } from '../../../../Assemblies/Web/AbTesting/Roblox.Web.AbTesting/AbTestingRequestProcessor';
-import { UserModelBuildersClubMembershipTypeEnum } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/UserModelBuildersClubMembershipTypeEnum';
-import { FASTFLAG, FFlag } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { SubjectTypeEnum } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { IBrowserTracker } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IBrowserTracker';
+import { AbTestingRequestProcessor } from 'Assemblies/Web/AbTesting/Roblox.Web.AbTesting/AbTestingRequestProcessor';
+import { UserModelBuildersClubMembershipTypeEnum } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/UserModelBuildersClubMembershipTypeEnum';
+import { FASTFLAG, FFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 FASTFLAG('RequireGlobalHTTPS');
 

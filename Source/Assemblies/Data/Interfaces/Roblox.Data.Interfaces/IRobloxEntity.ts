@@ -1,4 +1,4 @@
-import { CacheInfo } from '../../../Caching/Roblox.Caching/CacheInfo';
+import { CacheInfo } from 'Assemblies/Caching/Roblox.Caching/CacheInfo';
 
 export interface IRobloxEntity<TIDType, TEntityDAL> {
 	ID: TIDType;

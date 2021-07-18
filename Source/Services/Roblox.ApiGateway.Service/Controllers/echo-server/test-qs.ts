@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { KeyValueMapping } from '../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
 export default {
 	method: 'all',

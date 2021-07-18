@@ -1,5 +1,5 @@
-import { IEmail } from '../../Credentials/Roblox.Platform.Credentials/IEmail';
-import { IPassword } from '../../Credentials/Roblox.Platform.Credentials/IPassword';
+import { IEmail } from 'Assemblies/Platform/Credentials/Roblox.Platform.Credentials/IEmail';
+import { IPassword } from 'Assemblies/Platform/Credentials/Roblox.Platform.Credentials/IPassword';
 import { UserModelBuildersClubMembershipTypeEnum } from './UserModelBuildersClubMembershipTypeEnum';
 export interface IUser {
 	/*Int64*/ Id: number;

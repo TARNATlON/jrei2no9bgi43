@@ -1,12 +1,12 @@
 import { Response } from 'express';
 import { DFFlag, DYNAMIC_FASTFLAGVARIABLE } from './Logging/FastLog';
-import { ICustomError } from '../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { ICustomErrorList } from '../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomErrorList';
-import { IServiceError } from '../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/IServiceError';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { ICustomErrorList } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomErrorList';
+import { IServiceError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/IServiceError';
 import { Common } from './Common/StatusCodes';
-import stack from 'stack-trace';
-import filestream from 'fs';
-import errorText from 'source-code-error';
+import StackTraceParser from 'stack-trace';
+import FileStream from 'fs';
+import SourceCodeParser from 'source-code-error';
 
 DYNAMIC_FASTFLAGVARIABLE('Debug', false);
 
@@ -92,15 +92,15 @@ export class ErrorsClient<TResponse extends Response> {
 	}
 
 	public static GetErrorLine(error: Error) {
-		const StackTrace = stack.parse(error);
+		const StackTrace = StackTraceParser.parse(error);
 		let id = 0;
 		if ((<any>error).type) {
 			id = 1;
 		}
 		const fileName = StackTrace[id].getFileName();
 
-		const code = filestream.readFileSync(fileName, 'utf8');
-		let text: string = errorText({
+		const code = FileStream.readFileSync(fileName, 'utf8');
+		let text: string = SourceCodeParser({
 			filename: StackTrace[id].getFileName(),
 			code: code,
 			line: StackTrace[id].getLineNumber(),

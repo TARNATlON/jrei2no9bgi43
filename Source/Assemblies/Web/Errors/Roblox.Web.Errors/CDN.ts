@@ -27,7 +27,7 @@
 
 import crypto from 'crypto';
 import { Request, Response } from 'express';
-import { FASTSTRINGVARIABLE, FString } from '../../Util/Roblox.Web.Util/Logging/FastLog';
+import { FASTSTRINGVARIABLE, FString } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 FASTSTRINGVARIABLE('CDNAdminAuthCompletedStatusText', 'Verified');
 

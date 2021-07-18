@@ -1,4 +1,4 @@
-import { ITask } from '../ITask';
+import { ITask } from 'Microsoft/Ccr/Core/ITask';
 import { ArbiterTaskState } from './ArbiterTaskState';
 
 export interface IArbiterTask extends ITask {

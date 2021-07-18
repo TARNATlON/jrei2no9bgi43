@@ -1,5 +1,5 @@
-import { ArgumentNullException } from '../../ArgumentNullException';
-import { Type } from '../../Type';
+import { ArgumentNullException } from 'System/ArgumentNullException';
+import { Type } from 'System/Type';
 import { IFormatterConverter } from './IFormatterConverter';
 
 export class SerializationInfo {

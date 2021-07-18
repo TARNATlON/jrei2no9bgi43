@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { FileBaseUrls } from '../../../Common/Constants/Roblox.Common.Constants/FileBaseUrls';
-import { WebParsers } from '../../Parsers/Roblox.Web.Parsers/WebParsers';
+import { FileBaseUrls } from 'Assemblies/Common/Constants/Roblox.Common.Constants/FileBaseUrls';
+import { WebParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
 
 export class OriginMaster {
 	private _response: Response;

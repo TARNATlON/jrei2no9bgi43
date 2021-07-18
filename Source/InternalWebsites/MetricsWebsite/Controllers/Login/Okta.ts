@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { BaseURL } from '../../../../Assemblies/Common/Roblox.Common/BaseUrl';
-import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { DFString, DYNAMIC_FASTSTRINGVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 import Base64 from 'crypto-js/enc-base64';
 import { MD5 } from 'crypto-js';
-import { HashingClient } from '../../../../Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
-import { Nonce } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Generators/Nonce';
+import { HashingClient } from 'Assemblies/Data/Hashing/Roblox.Data.Hashing/HashingClient';
+import { Nonce } from 'Assemblies/Web/Util/Roblox.Web.Util/Generators/Nonce';
 
 DYNAMIC_FASTSTRINGVARIABLE('OktaClientID', '');
 

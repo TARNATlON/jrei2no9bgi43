@@ -25,9 +25,11 @@
 	***
 */
 
+import { Request, Response } from 'express';
+
 export default {
 	method: 'all',
-	func: async (_req, res) => {
-		return res.redirect('http://www.sitetest4.robloxlabs.com' + _req.url);
+	func: (request: Request, response: Response): void => {
+		response.redirect(`${request.protocol}://www.sitetest4.robloxlabs.com${request.url}`);
 	},
 };

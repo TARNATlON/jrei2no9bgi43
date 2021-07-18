@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { PointsHandler } from '../../../../Assemblies/ApiServices/Roblox.Points.Handler/Implementation/PointsHandler';
-import { IUser } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
-import { IUniverse } from '../../../../Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
-import { __baseDirName } from '../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
-import { DefaultAsp404 } from '../../../../Assemblies/Web/Errors/Roblox.Web.Errors/aspError404';
-import { ApiKeyValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
-import { ContentTypeValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
-import { MethodValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { HttpRequestMethodEnum } from '../../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { ProtocolValidator } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ProtocolValidator';
-import { KeyValueMapping } from '../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { PointsHandler } from 'Assemblies/ApiServices/Roblox.Points.Handler/Implementation/PointsHandler';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { IUniverse } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import { DefaultAsp404 } from 'Assemblies/Web/Errors/Roblox.Web.Errors/aspError404';
+import { ApiKeyValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
+import { ContentTypeValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { ProtocolValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ProtocolValidator';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
 export default {
 	method: 'all',

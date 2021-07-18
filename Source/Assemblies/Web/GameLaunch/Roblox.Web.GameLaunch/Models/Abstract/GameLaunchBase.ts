@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { IGameLaunchBase, ReportDebatableErrorDelegate } from '../../Interfaces/IGameLaunchBase';
-import { IGameLaunchRequestBase } from '../../Interfaces/IGameLaunchRequestBase';
+import { IGameLaunchBase, ReportDebatableErrorDelegate } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Interfaces/IGameLaunchBase';
+import { IGameLaunchRequestBase } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Interfaces/IGameLaunchRequestBase';
 
 export abstract class GameLaunchBase implements IGameLaunchBase {
 	protected _response: Response;

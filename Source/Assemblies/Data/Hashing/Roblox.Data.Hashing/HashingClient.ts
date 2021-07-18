@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import filestream from 'fs';
-import crypto from 'crypto';
-import { __baseDirName } from '../../../Common/Constants/Roblox.Common.Constants/Directories';
+import { readFileSync as ReadAllLines } from 'fs';
+import { createSign as CreateSignature } from 'crypto';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
 
 export class HashingClient {
 	private _response: Response;
@@ -12,7 +12,7 @@ export class HashingClient {
 
 	public SignFileAndRespond(fileName: string, useBaseDirectory: boolean = true) {
 		try {
-			const file = filestream.readFileSync(
+			const file = ReadAllLines(
 				`${useBaseDirectory ? __baseDirName : ''}${useBaseDirectory && !fileName.startsWith('/') ? '/' : ''}${fileName}`,
 				'utf-8',
 			);
@@ -31,11 +31,11 @@ export class HashingClient {
 	}
 
 	public static GetSignedData(data: string, algorithm: string = 'sha1') {
-		const signature = crypto.createSign(algorithm);
+		const signature = CreateSignature(algorithm);
 		signature.write(data);
 		signature.end();
 
-		const key = filestream.readFileSync(__baseDirName + '/InternalCDN/PrivateKey.pem'); // Change the directory if needed.
+		const key = ReadAllLines(__baseDirName + '/InternalCDN/PrivateKey.pem'); // Change the directory if needed.
 		const sig = signature.sign(key, 'base64');
 		return sig;
 	}

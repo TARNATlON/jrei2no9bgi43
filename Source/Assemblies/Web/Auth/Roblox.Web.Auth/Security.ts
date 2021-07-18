@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import { KeyValueMapping } from '../../../Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { User } from '../../../Platform/Membership/Roblox.Platform.Membership/User';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
 
 export class Security {
 	public static GetSecurityToken(request: Request) {

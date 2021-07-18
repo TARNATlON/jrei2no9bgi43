@@ -1,11 +1,11 @@
 import { Connection } from 'mysql';
-import { Task } from '../../../../System/Threading/Task';
-import { IPartialDatabaseRowResponseModel } from '../Models/IPartialDatabaseRowResponseModel';
-import { IPartialDatabaseCondition } from '../Models/IPartialDatabaseCondtion';
-import { IPartialDatabaseRowsByKeyModel } from '../Models/IPartialDatabaseRowsByKeyModel';
-import { IPartialDatabaseRowsByKeyValueModel } from '../Models/IPartialDatabaseRowsByKeyValueModel';
-import { IPartialDatabaseSetValuesModel } from '../Models/IPartialDatabaseSetValuesModel';
-import { PartialDatabaseConditionType } from '../Enumeration/PartialDatabaseConditionType';
+import { Task } from 'System/Threading/Task';
+import { IPartialDatabaseRowResponseModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseRowResponseModel';
+import { IPartialDatabaseCondition } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseCondtion';
+import { IPartialDatabaseRowsByKeyModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseRowsByKeyModel';
+import { IPartialDatabaseRowsByKeyValueModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseRowsByKeyValueModel';
+import { IPartialDatabaseSetValuesModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseSetValuesModel';
+import { PartialDatabaseConditionType } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
 
 export class PartialEntity<TEntity> {
 	private connection_: Connection;

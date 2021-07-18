@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express-serve-static-core';
-import { KeyValueMapping } from '../../../Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { Security } from '../../Auth/Roblox.Web.Auth/Security';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { Security } from 'Assemblies/Web/Auth/Roblox.Web.Auth/Security';
 
 export const CookieHandler = (async (request, response, next) => {
 	if (

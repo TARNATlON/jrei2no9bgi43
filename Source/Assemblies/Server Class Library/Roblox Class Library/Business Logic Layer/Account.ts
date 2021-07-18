@@ -1,12 +1,12 @@
-import { CacheabilitySettings } from '../../../Caching/Roblox.Caching/CacheabilitySettings';
-import { CacheInfo } from '../../../Caching/Roblox.Caching/CacheInfo';
-import { CacheManager } from '../../../Caching/Roblox.Caching/CacheManager';
-import { RefreshAhead } from '../../../Common/Roblox.Common/RefreshAhead';
-import { IRobloxEntity } from '../../../Data/Interfaces/Roblox.Data.Interfaces/IRobloxEntity';
-import { EntityHelper } from '../../../Data/Roblox.Data/Entities/EntityHelper';
-import { AccountDAL } from '../Data Logic Layer/AccountDAL';
-import { IAccount } from '../Types And Interfaces/IAccount';
-import { IAccountRoleSet } from '../Types And Interfaces/IAccountRoleSet';
+import { CacheabilitySettings } from 'Assemblies/Caching/Roblox.Caching/CacheabilitySettings';
+import { CacheInfo } from 'Assemblies/Caching/Roblox.Caching/CacheInfo';
+import { CacheManager } from 'Assemblies/Caching/Roblox.Caching/CacheManager';
+import { RefreshAhead } from 'Assemblies/Common/Roblox.Common/RefreshAhead';
+import { IRobloxEntity } from 'Assemblies/Data/Interfaces/Roblox.Data.Interfaces/IRobloxEntity';
+import { EntityHelper } from 'Assemblies/Data/Roblox.Data/Entities/EntityHelper';
+import { AccountDAL } from 'Assemblies/Server Class Library/Roblox Class Library/Data Logic Layer/AccountDAL';
+import { IAccount } from 'Assemblies/Server Class Library/Roblox Class Library/Types And Interfaces/IAccount';
+import { IAccountRoleSet } from 'Assemblies/Server Class Library/Roblox Class Library/Types And Interfaces/IAccountRoleSet';
 import { AccountRoleSet } from './AccountRoleSet';
 
 export class Account implements IRobloxEntity<number, AccountDAL>, IAccount {

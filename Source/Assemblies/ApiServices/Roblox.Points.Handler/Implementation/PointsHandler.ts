@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import { IUser } from '../../../Platform/Membership/Roblox.Platform.Membership/IUser';
-import { IUniverse } from '../../../Platform/Universes/Roblox.Platform.Universes/IUniverse';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { IUniverse } from 'Assemblies/Platform/Universes/Roblox.Platform.Universes/IUniverse';
 
 export class PointsHandler {
 	private _response: Response;

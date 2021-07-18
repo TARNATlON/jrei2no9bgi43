@@ -1,6 +1,6 @@
-import { dbInfo } from '../Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
-import { SqlParameter } from '../System/Data/SqlClient/SqlParameter';
-import { SqlDbType } from '../System/Data/SqlDbType';
+import { dbInfo } from 'Assemblies/Common/Persistence/Roblox.Common.Persistence/dbInfo';
+import { SqlParameter } from 'System/Data/SqlClient/SqlParameter';
+import { SqlDbType } from 'System/Data/SqlDbType';
 
 describe('Database info with connection string and procedure name', () => {
 	it('Should contruct a dbInfo class with a connection string and procedure name', () => {

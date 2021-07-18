@@ -1,10 +1,10 @@
-import { CacheabilitySettings } from '../../../Caching/Roblox.Caching/CacheabilitySettings';
-import { CacheInfo } from '../../../Caching/Roblox.Caching/CacheInfo';
-import { CacheManager } from '../../../Caching/Roblox.Caching/CacheManager';
-import { IRobloxEntity } from '../../../Data/Interfaces/Roblox.Data.Interfaces/IRobloxEntity';
-import { EntityHelper } from '../../../Data/Roblox.Data/Entities/EntityHelper';
-import { AccountRoleSetDAL } from '../Data Logic Layer/AccountRoleSetDAL';
-import { IAccountRoleSet } from '../Types And Interfaces/IAccountRoleSet';
+import { CacheabilitySettings } from 'Assemblies/Caching/Roblox.Caching/CacheabilitySettings';
+import { CacheInfo } from 'Assemblies/Caching/Roblox.Caching/CacheInfo';
+import { CacheManager } from 'Assemblies/Caching/Roblox.Caching/CacheManager';
+import { IRobloxEntity } from 'Assemblies/Data/Interfaces/Roblox.Data.Interfaces/IRobloxEntity';
+import { EntityHelper } from 'Assemblies/Data/Roblox.Data/Entities/EntityHelper';
+import { AccountRoleSetDAL } from 'Assemblies/Server Class Library/Roblox Class Library/Data Logic Layer/AccountRoleSetDAL';
+import { IAccountRoleSet } from 'Assemblies/Server Class Library/Roblox Class Library/Types And Interfaces/IAccountRoleSet';
 
 export class AccountRoleSet implements IRobloxEntity<number, AccountRoleSetDAL>, IAccountRoleSet {
 	private _EntityDAL: AccountRoleSetDAL;

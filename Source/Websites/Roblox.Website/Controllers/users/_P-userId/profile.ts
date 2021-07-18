@@ -26,9 +26,9 @@
 */
 
 import { Request, Response } from 'express';
-import { DFFlag, DFString, DYNAMIC_FASTFLAG, DYNAMIC_FASTSTRING } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { User } from '../../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
-import { KeyValueMapping } from '../../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { DFFlag, DFString, DYNAMIC_FASTFLAG, DYNAMIC_FASTSTRING } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
 DYNAMIC_FASTFLAG('IsBannerEnabled');
 DYNAMIC_FASTSTRING('SiteBanner');

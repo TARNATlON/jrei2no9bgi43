@@ -1,8 +1,8 @@
 import { Response } from 'express';
-import { Counter } from '../../../Data/Counters/Roblox.Data.Counters/Counter';
-import { Sequence } from '../../../Data/Counters/Roblox.Data.Counters/Sequence';
-import { ISequencesItem } from '../../../../Services/Roblox.EphemeralCounters.Service/ISequencesItem';
-import { ICounter } from '../../../../Services/Roblox.EphemeralCounters.Service/Models/ICounter';
+import { Counter } from 'Assemblies/Data/Counters/Roblox.Data.Counters/Counter';
+import { Sequence } from 'Assemblies/Data/Counters/Roblox.Data.Counters/Sequence';
+import { ISequencesItem } from 'Services/Roblox.EphemeralCounters.Service/ISequencesItem';
+import { ICounter } from 'Services/Roblox.EphemeralCounters.Service/Models/ICounter';
 
 export namespace EphemeralCountersService {
 	export async function HandleBatchSequences(sequences: ISequencesItem[], response: Response) {

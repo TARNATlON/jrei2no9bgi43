@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { ErrorsClient } from '../ErrorsClient';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 import { ISingleValidatorBase } from './Interfaces/ISingleValidatorBase';
 
 export class ProtocolValidator<TResponse extends Response> implements ISingleValidatorBase<string, bool> {

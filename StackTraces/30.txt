@@ -1,0 +1,37 @@
+
+Error Detail: Exception has been thrown by the target of an invocation.
+Inner Exception: Roblox.ApiClientBase.ApiClientException: ApiClient EventsClient exception:
+Url = https://events.service.simulprod.com/v1.0/Events/Report
+StatusCode = NotFound
+StatusDescription = Not Found
+ResponseText = <!DOCTYPE HTML PUBLIC \u0022-//W3C//DTD HTML 4.01//EN\u0022\u0022http://www.w3.org/TR/html4/strict.dtd\u0022>
+<HTML><HEAD><TITLE>Not Found</TITLE>
+<META HTTP-EQUIV=\u0022Content-Type\u0022 Content=\u0022text/html; charset=us-ascii\u0022></HEAD>
+<BODY><h2>Not Found</h2>
+<hr><p>HTTP Error 404. The requested resource is not found.</p>
+</BODY></HTML>
+
+ ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.WebClient.UploadDataInternal(Uri address, String method, Byte[] data, WebRequest& request)
+   at System.Net.WebClient.UploadData(Uri address, String method, Byte[] data)
+   at System.Net.WebClient.UploadData(String address, String method, Byte[] data)
+   at Roblox.ApiClientBase.ApiClientBase.DoPostOrPut(WebClient webClient, String httpMethod, String requestUrl, IEnumerable`1 formParameters, String rawPostData, IEnumerable`1 multipartFormData) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 245
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 352
+   --- End of inner exception stack trace ---
+   at Roblox.ApiClientBase.ApiClientBase.ThrowConvertedException(WebException ex, String actionName, Nullable`1 statusCode, String statusDescription) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 316
+   at Roblox.ApiClientBase.GuardedApiClientBase.OnRequestFailed(WebException ex, Int64 requestId, String actionName, Nullable`1 statusCode, String statusDescription) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\GuardedApiClientBase.cs:line 183
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 375
+   at Roblox.ApiClientBase.GuardedApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\GuardedApiClientBase.cs:line 141
+   at Roblox.Events.Client.EventsClient.ReportEvent(String eventName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClients\\Roblox.Events.Client\\Roblox.Events.Client\\EventsClient.cs:line 20
+   at Roblox.ApiProxy.Service.Global.Application_BeginRequest() in C:\\teamcity-agent\\work\\d3b7ae92c30ca20c\\Services\\Roblox.ApiProxy\\Roblox.ApiProxy.Service\\Global.asax.cs:line 55
+Exception Stack Trace:    at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at System.Web.Util.ArglessEventHandlerProxy.Callback(Object sender, EventArgs e)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+Exception Source: mscorlib
+Exception TargetSite: System.Object InvokeMethod(System.Object, System.Object[], System.Signature, Boolean)
+Exception Data: System.Collections.ListDictionaryInternal

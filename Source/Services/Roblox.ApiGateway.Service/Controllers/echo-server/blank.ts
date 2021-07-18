@@ -4,8 +4,8 @@ import {
 	DFString,
 	DYNAMIC_FASTFLAGVARIABLE,
 	DYNAMIC_FASTSTRINGVARIABLE,
-} from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { User } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
 
 DYNAMIC_FASTSTRINGVARIABLE('SiteBanner', 'Test');
 DYNAMIC_FASTFLAGVARIABLE('ShouldShowLeftNavOnTestPage', false);

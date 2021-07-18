@@ -1,8 +1,8 @@
-import { DataRowVersion } from '../DataRowVersion';
-import { DbType } from '../DbType';
-import { IDataParameter } from '../IDataParameter';
-import { IDbDataParameter } from '../IDbDataParameter';
-import { ParameterDirection } from '../ParameterDirection';
+import { DataRowVersion } from 'System/Data/DataRowVersion';
+import { DbType } from 'System/Data/DbType';
+import { IDataParameter } from 'System/Data/IDataParameter';
+import { IDbDataParameter } from 'System/Data/IDbDataParameter';
+import { ParameterDirection } from 'System/Data/ParameterDirection';
 
 export abstract class DbParameter implements IDbDataParameter, IDataParameter {
 	public DbType: DbType; /* get; set; */

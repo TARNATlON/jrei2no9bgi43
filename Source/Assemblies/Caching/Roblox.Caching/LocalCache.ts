@@ -1,5 +1,5 @@
-import { IDisposable } from '../../../System/IDisposable';
-import { EntityHelper } from '../../Data/Roblox.Data/Entities/EntityHelper';
+import { IDisposable } from 'System/IDisposable';
+import { EntityHelper } from 'Assemblies/Data/Roblox.Data/Entities/EntityHelper';
 import { CacheInfo } from './CacheInfo';
 import { ItemFetcher } from './ItemFetcher';
 

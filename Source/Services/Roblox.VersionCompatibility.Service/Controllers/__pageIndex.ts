@@ -1,5 +1,5 @@
 /*
-	FileName: LoadPlaceInfo.ashx.ts
+	FileName: __pageIndex.ts
 	Written By: Nikita Nikolaevich Petko
 	File Type: Module
 	Description: Load Place info script
@@ -25,9 +25,11 @@
 	***
 */
 
+import { Request, Response } from 'express';
+
 export default {
 	method: 'all',
-	func: async (_req, res) => {
-		res.send('RVCSS OK!!!');
+	func: async (_request: Request, response: Response) => {
+		response.contentType('application/json').send(JSON.stringify('RVCSS OK!!!'));
 	},
 };

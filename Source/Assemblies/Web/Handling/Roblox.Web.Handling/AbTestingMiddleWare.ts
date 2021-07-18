@@ -26,21 +26,9 @@
 */
 
 import { RequestHandler } from 'express-serve-static-core';
-import { FASTLOG5, FLog, LOGGROUP } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { OriginMaster } from '../../Util/Roblox.Web.Util/OriginMaster';
-
-LOGGROUP('AandBTusting');
+import { OriginMaster } from 'Assemblies/Web/Util/Roblox.Web.Util/OriginMaster';
 
 export const AbTestingMiddleWare = ((req, res, next) => {
-	FASTLOG5(
-		FLog['AandBTusting'],
-		`[FLog::AandBTusting] %s REQUEST ON %s://%s%s FROM %s`,
-		req.method.toUpperCase(),
-		req.protocol,
-		req.hostname,
-		req.url,
-		req.headers['user-agent'],
-	);
 	res.header({
 		expires: -1,
 		p3p: ' CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"',

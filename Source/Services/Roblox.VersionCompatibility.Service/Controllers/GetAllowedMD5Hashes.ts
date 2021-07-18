@@ -26,32 +26,54 @@
 */
 
 import { Request, Response } from 'express';
-import { KeyValueMapping } from '../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { ClientVersion } from '../../../Assemblies/Data/Versioning/Roblox.Data.Versioning/ClientVersion';
-import { HttpRequestMethodEnum } from '../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { DFFlag, DYNAMIC_FASTFLAGVARIABLE } from '../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { ApiKeyValidator } from '../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
-import { MethodValidator } from '../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { ApiKeyRequest } from '../Models/ApiKeyRequest';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { ClientVersion } from 'Assemblies/Data/Versioning/Roblox.Data.Versioning/ClientVersion';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { UserAgentHelper } from 'Assemblies/UserAgents/Roblox.UserAgents/UserAgentHelper';
+import {
+	DFFlag,
+	DFLog,
+	DYNAMIC_FASTFLAGVARIABLE,
+	DYNAMIC_LOGVARIABLE,
+	FASTLOGNOFILTER,
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ApiKeyValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { ApiArrayResponse } from 'Assemblies/Web/WebAPI/Models/ApiArrayResponse';
 
 DYNAMIC_FASTFLAGVARIABLE('ReturnEmptyMD5HashArrayForTesting', false);
+DYNAMIC_LOGVARIABLE('ClientVersioning', 7);
 
 export default {
 	method: 'all',
-	func: async (request: Request<null, string[], null, ApiKeyRequest, null>, response: Response<string[]>) => {
-		const apiKeyValidatorClient = new ApiKeyValidator(response, 'The service is unavailable.');
+	func: async (request: Request<null, string[]>, response: Response<ApiArrayResponse<string> | string[]>) => {
+		const requestApiKey = KeyValueMapping.FetchKeyFromObjectCaseInsensitiveOrDefault(request.query, 'ApiKey', null);
+
+		FASTLOGNOFILTER(
+			DFLog('ClientVersioning'),
+			`[DFLog::ClientVersioning] GetAllowedMD5Hashes request from ${request.ip} (${
+				request['headers']['user-agent'] || 'No Useragent'
+			}) with the ApiKey '${requestApiKey ?? 'No Api Key'}'`,
+		);
+
+		const apiKeyValidatorClient = new ApiKeyValidator(response, undefined);
 		const methodValidatorClient = new MethodValidator(response);
 
 		if (methodValidatorClient.Validate(request.method, 'GET', true) === HttpRequestMethodEnum.UNKNOWN) return;
 		if (
 			!apiKeyValidatorClient.MultiValidate(
-				KeyValueMapping.FetchKeyFromObjectCaseInsensitive(request.query, 'ApiKey'),
+				requestApiKey,
 				['2B4BA7FC-5843-44CF-B107-BA22D3319DCD', 'DAC86DA7-A4BC-4BFF-8CA4-8B54E1AC925B'],
 				true,
 			)
 		)
 			return;
-		if (DFFlag('ReturnEmptyMD5HashArrayForTesting')) return response.send([]);
-		return response.send(await ClientVersion.GetAllLatestMD5HashesForUniqueClients());
+		if (DFFlag('ReturnEmptyMD5HashArrayForTesting')) {
+			if (UserAgentHelper.CheckIsUserAgentFromLegacyRccService(request.headers['user-agent'])) return response.send([]);
+			return response.send({ data: [] });
+		}
+		if (UserAgentHelper.CheckIsUserAgentFromLegacyRccService(request.headers['user-agent']))
+			return response.send(await ClientVersion.GetAllLatestMD5HashesForUniqueClients());
+		return response.send({ data: await ClientVersion.GetAllLatestMD5HashesForUniqueClients() });
 	},
 };

@@ -1,5 +1,5 @@
-import { Type } from '../../Type';
-import { TypeCode } from '../../TypeCode';
+import { Type } from 'System/Type';
+import { TypeCode } from 'System/TypeCode';
 
 export interface IFormatterConverter {
 	Convert(value: any, type: Type): any;

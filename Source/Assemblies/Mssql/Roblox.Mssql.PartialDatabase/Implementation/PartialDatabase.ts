@@ -1,5 +1,5 @@
-import { Task } from '../../../../System/Threading/Task';
-import { Connection, createConnection } from 'mysql';
+import { Task } from 'System/Threading/Task';
+import { Connection, createConnection as InvokeNewConnection } from 'mysql';
 import { PartialEntity } from './PartialEntity';
 
 export class PartialDatabase {
@@ -11,7 +11,7 @@ export class PartialDatabase {
 		this.name_ = name.toLowerCase();
 		this.username_ = username;
 		this.connected_ = false;
-		this.connection_ = createConnection({
+		this.connection_ = InvokeNewConnection({
 			host: 'localhost',
 			user: username,
 			password: password,

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Express as IApplicationBuilder } from 'express-serve-static-core';
-import { DFLog, FASTLOG3 } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { HttpRequestMethodEnum } from '../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { DFLog, FASTLOG3 } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
 import { WebParsers } from './WebParsers';
 
 export class WebControllerParsers {

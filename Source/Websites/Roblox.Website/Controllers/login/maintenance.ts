@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import Hosts from '../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Hosts';
-import { SessionUser } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/SessionUser';
-import { User } from '../../../../Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
-import { DFFlag, DYNAMIC_FASTFLAG, DYNAMIC_FASTFLAGVARIABLE } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { IMetaTagListViewModel } from '../../ViewModels/MetaTagListViewModel';
+import Hosts from 'Assemblies/Common/Constants/Roblox.Common.Constants/Hosts';
+import { SessionUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/SessionUser';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { DFFlag, DYNAMIC_FASTFLAG, DYNAMIC_FASTFLAGVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { IMetaTagListViewModel } from 'Websites/Roblox.Website/ViewModels/MetaTagListViewModel';
 
 DYNAMIC_FASTFLAGVARIABLE('WWWIndexPageControllerEnabled', false);
 DYNAMIC_FASTFLAG('DisplayNamesEnabled');

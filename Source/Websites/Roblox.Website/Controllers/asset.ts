@@ -25,18 +25,15 @@
 	***
 */
 
-import dotenv from 'dotenv';
-import { __baseDirName } from '../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
-
-dotenv.config({ path: __baseDirName + '/.env' });
+import { Request, Response } from 'express';
 
 export default {
 	method: 'all',
-	func: (req, res): void => {
-		if (req.query.id === '1') {
-			res.redirect('http://static.sitetest4.robloxlabs.com/rbx/1.rbxlx');
+	func: (request: Request, response: Response): void => {
+		if (request.query.id === '1') {
+			response.redirect(`${request.protocol}://static.sitetest4.robloxlabs.com/rbx/1.rbxlx`);
 			return;
 		}
-		res.redirect('http://assetdelivery.sitetest4.robloxlabs.com/v1' + req.url);
+		response.redirect(`${request.protocol}://assetdelivery.sitetest4.robloxlabs.com/v1${request.url}`);
 	},
 };

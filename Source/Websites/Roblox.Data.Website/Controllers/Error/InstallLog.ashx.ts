@@ -25,7 +25,7 @@
 	***
 */
 
-import { FASTLOG1, FLog, LOGGROUP } from '../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { FASTLOG1, FLog, LOGGROUP } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 LOGGROUP('dmp');
 

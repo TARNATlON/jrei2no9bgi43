@@ -1,8 +1,8 @@
-import { BaseURL } from '../../../Common/Roblox.Common/BaseUrl';
-import { HttpClientInvoker } from '../../../Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
-import { HttpRequestMethodEnum } from '../../../Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { Task } from '../../../../System/Threading/Task';
-import { IServiceUsernameValidationRequest } from '../Models/IServiceUsernameValidationRequest';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { HttpClientInvoker } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Implementation/HttpClientInvoker';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { Task } from 'System/Threading/Task';
+import { IServiceUsernameValidationRequest } from 'Assemblies/ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationRequest';
 
 export class UsersClient {
 	public static async ValidateUsername(request: IServiceUsernameValidationRequest): Task<[boolean, number, any, Error]> {

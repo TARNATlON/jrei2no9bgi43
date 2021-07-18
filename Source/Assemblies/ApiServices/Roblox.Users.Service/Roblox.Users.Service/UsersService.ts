@@ -1,9 +1,9 @@
 import { Response } from 'express';
-import { IServiceUsernameValidationRequest } from '../../../ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationRequest';
-import { IServiceUsernameValidationResponse } from '../../../ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationResponse';
-import { UsernameValidationStatus } from '../../../../ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationStatus';
-import { User } from '../../../Platform/Membership/Roblox.Platform.Membership/User';
-import { InputValidator } from '../../../Web/Util/Roblox.Web.Util/Validators/InputValidator';
+import { IServiceUsernameValidationRequest } from 'Assemblies/ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationRequest';
+import { IServiceUsernameValidationResponse } from 'Assemblies/ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationResponse';
+import { UsernameValidationStatus } from 'ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationStatus';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
 
 export namespace UsersService {
 	export namespace Validators {

@@ -26,10 +26,10 @@
 */
 
 import { Request, Response } from 'express';
-import { ClientSettings } from '../../../../../Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
-import { WebParsers } from '../../../../../Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
-import { DFLog, FASTLOGS } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { InputValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
+import { ClientSettings } from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
+import { WebParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
+import { DFLog, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
 
 export default {
 	method: 'all',

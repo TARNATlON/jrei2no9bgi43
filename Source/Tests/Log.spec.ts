@@ -1,4 +1,4 @@
-import { FastVarType } from '../Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
+import { FastVarType } from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
 import {
 	DFFlag,
 	DYNAMIC_FASTFLAGVARIABLE,
@@ -15,7 +15,7 @@ import {
 	RegisterFlag,
 	RegisterLogGroup,
 	SetValue,
-} from '../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 LOGGROUP('UnitTestOn');
 LOGGROUP('UnitTestOff');

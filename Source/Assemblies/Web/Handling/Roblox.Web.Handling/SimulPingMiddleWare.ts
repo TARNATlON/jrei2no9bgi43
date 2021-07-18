@@ -26,8 +26,8 @@
 */
 
 import { RequestHandler } from 'express-serve-static-core';
-import { FASTLOG5, FLog, LOGGROUP } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { OriginMaster } from '../../Util/Roblox.Web.Util/OriginMaster';
+import { FASTLOG5, FLog, LOGGROUP } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { OriginMaster } from 'Assemblies/Web/Util/Roblox.Web.Util/OriginMaster';
 
 LOGGROUP('SIMPLEPING');
 

@@ -1,8 +1,8 @@
-import { Task } from '../../../../../System/Threading/Task';
-import { IEnrollment } from '../../../../Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
+import { Task } from 'System/Threading/Task';
+import { IEnrollment } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
 import Http from 'axios';
-import { BaseURL } from '../../../../Common/Roblox.Common/BaseUrl';
-import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from '../../../../Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { BaseURL } from 'Assemblies/Common/Roblox.Common/BaseUrl';
+import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 import https from 'https';
 
 DYNAMIC_LOGGROUP('Tasks');

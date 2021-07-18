@@ -27,8 +27,8 @@
 */
 
 import filestream from 'fs';
-import { __baseDirName } from '../../../../../Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
-import { DFFlag, DYNAMIC_FASTFLAG, FASTFLAG, FFlag } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
+import { DFFlag, DYNAMIC_FASTFLAG, FASTFLAG, FFlag } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
 
 FASTFLAG('RequireGlobalHTTPS');
 DYNAMIC_FASTFLAG('IsAuthV2Enabled');

@@ -25,8 +25,6 @@
 	***
 */
 
-// import { Roblox } from '../../../../Roblox.Api';
-// import fs from 'fs';
 import a from 'axios';
 
 export default {
@@ -43,11 +41,5 @@ export default {
 				const newheaders = JSON.parse(JSON.stringify(e.response.headers).split('roblox.com').join('sitetest4.robloxlabs.com'));
 				return res.header(newheaders).status(e.response.status).send(e.response.data);
 			});
-		// let template = fs.readFileSync(
-		// 	Roblox.Api.Constants.RobloxDirectories.__iBaseDirectory + '/InternalCDN/Roblox.UserProfile.html',
-		// 	{ encoding: 'utf-8' },
-		// );
-		// template = template.split('<USERIDHERE>').join(userId.toString());
-		// return res.send(template);
 	},
 };

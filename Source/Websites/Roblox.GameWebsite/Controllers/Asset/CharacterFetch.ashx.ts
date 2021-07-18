@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { AvatarAccoutrementsRequest } from '../../Models/Game/IAvatarAccoutrementsRequest';
+import { AvatarAccoutrementsRequest } from 'Websites/Roblox.GameWebsite/Models/Game/IAvatarAccoutrementsRequest';
 import AvatarAccoutrements from './AvatarAccoutrements.ashx';
 
 // TODO: Move the qs to a model.

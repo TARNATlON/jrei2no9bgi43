@@ -1,5 +1,5 @@
-import Hosts from '../Constants/Roblox.Common.Constants/Hosts'; /* we should really be using BaseURL to contruct all of these instead of hardcoding them */
-import qs from 'querystring';
+import Hosts from 'Assemblies/Common/Constants/Roblox.Common.Constants/Hosts'; /* we should really be using BaseURL to contruct all of these instead of hardcoding them */
+import QueryString from 'querystring';
 
 /**
  * TODO: In the future this should be similar to Roblox.Configuration (USE_CONFIG)
@@ -93,7 +93,7 @@ export class BaseURL {
 		}
 
 		if (queryParameters) {
-			uri += `?${qs.stringify(queryParameters)}`;
+			uri += `?${QueryString.stringify(queryParameters)}`;
 		}
 
 		return `${fetchSecureBaseUri ? 'https://' : 'http://'}${uri}`;
@@ -130,7 +130,7 @@ export class BaseURL {
 		let uri: string = `${baseUrl}${path}`;
 
 		if (queryParameters) {
-			uri += `?${qs.stringify(queryParameters)}`;
+			uri += `?${QueryString.stringify(queryParameters)}`;
 		}
 
 		return uri;

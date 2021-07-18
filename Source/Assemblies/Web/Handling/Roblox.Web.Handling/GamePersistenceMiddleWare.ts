@@ -26,10 +26,7 @@
 */
 
 import { RequestHandler } from 'express-serve-static-core';
-import { FASTLOG5, FLog, LOGGROUP } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { CommonValidator } from '../../Util/Roblox.Web.Util/Validators/CommonValidator';
-
-LOGGROUP('GumePersistince');
+import { CommonValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/CommonValidator';
 
 export const GamePersistenceMiddleware = ((req, res, next) => {
 	const commonValidatorClient = new CommonValidator(res);
@@ -49,15 +46,6 @@ export const GamePersistenceMiddleware = ((req, res, next) => {
 		)
 	)
 		return res.status(503).send({ errors: [{ code: 0, message: 'Service Undergoing Maintenance' }] });
-	FASTLOG5(
-		FLog['GumePersistince'],
-		`[FLog::GumePersistince] %s REQUEST ON %s://%s%s FROM %s`,
-		req.method.toUpperCase(),
-		req.protocol,
-		req.hostname,
-		req.url,
-		req.headers['user-agent'].toUpperCase(),
-	);
 	res.header({
 		expires: -1,
 		p3p: ' CP="CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE"',

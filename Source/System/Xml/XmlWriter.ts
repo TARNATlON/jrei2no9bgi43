@@ -1,4 +1,4 @@
-import { IDisposable } from '../IDisposable';
+import { IDisposable } from 'System/IDisposable';
 
 export class XmlWriter implements IDisposable {
 	Dispose(): void {

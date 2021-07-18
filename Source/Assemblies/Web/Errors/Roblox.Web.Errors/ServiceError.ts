@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ErrorsClient } from '../../Util/Roblox.Web.Util/ErrorsClient';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 
 export const DefaultServiceError = (request: Request, response: Response) => {
 	const errorsClient = new ErrorsClient(response);

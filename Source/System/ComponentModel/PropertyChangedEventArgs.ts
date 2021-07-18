@@ -4,7 +4,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-import { EventArgs } from '../EventArgs';
+import { EventArgs } from 'System/EventArgs';
 
 export class PropertyChangedEventArgs extends EventArgs {
 	private readonly propertyName: string;

@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { KeyValueMapping } from '../../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { ExploitReport } from '../../../../../Assemblies/Moderation/Roblox.Moderation/Entities/ExploitReport';
-import { IExploitReport } from '../../../../../Assemblies/Moderation/Roblox.Moderation/Entities/IExploitReport';
-import { Convert } from '../../../../../System/Convert';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { ExploitReport } from 'Assemblies/Moderation/Roblox.Moderation/Entities/ExploitReport';
+import { IExploitReport } from 'Assemblies/Moderation/Roblox.Moderation/Entities/IExploitReport';
+import { Convert } from 'System/Convert';
 
 export default {
 	method: 'all',

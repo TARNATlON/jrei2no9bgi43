@@ -1,0 +1,65 @@
+
+Error Detail: ApiClient EventsClient exception:
+Url = https://events.service.simulprod.com/v1.0/Events/Report
+StatusCode = NotFound
+StatusDescription = Not Found
+ResponseText = <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+<HTML><HEAD><TITLE>Not Found</TITLE>
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=us-ascii"></HEAD>
+<BODY><h2>Not Found</h2>
+<hr><p>HTTP Error 404. The requested resource is not found.</p>
+</BODY></HTML>
+
+
+Inner Exception: System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.WebClient.UploadDataInternal(Uri address, String method, Byte[] data, WebRequest& request)
+   at System.Net.WebClient.UploadData(Uri address, String method, Byte[] data)
+   at System.Net.WebClient.UploadData(String address, String method, Byte[] data)
+   at Roblox.ApiClientBase.ApiClientBase.DoPostOrPut(WebClient webClient, String httpMethod, String requestUrl, IEnumerable`1 formParameters, String rawPostData, IEnumerable`1 multipartFormData) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 245
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 352
+Exception Stack Trace:    at Roblox.ApiClientBase.ApiClientBase.ThrowConvertedException(WebException ex, String actionName, Nullable`1 statusCode, String statusDescription) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 316
+   at Roblox.ApiClientBase.GuardedApiClientBase.OnRequestFailed(WebException ex, Int64 requestId, String actionName, Nullable`1 statusCode, String statusDescription) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\GuardedApiClientBase.cs:line 183
+   at Roblox.ApiClientBase.ApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\ApiClientBase.cs:line 375
+   at Roblox.ApiClientBase.GuardedApiClientBase.ExecuteHttpRequest(String actionPath, HttpMethod method, IEnumerable`1 queryStringParameters, IEnumerable`1 formParameters, IEnumerable`1 headers, String rawPostData, IEnumerable`1 multipartFormData, String actionName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClientBase\\Roblox.ApiClientBase\\GuardedApiClientBase.cs:line 141
+   at Roblox.Events.Client.EventsClient.ReportEvent(String eventName) in C:\\teamcity-agent\\work\\a195a27d1c96dbc\\Assemblies\\ApiClients\\Roblox.Events.Client\\Roblox.Events.Client\\EventsClient.cs:line 20
+   at Roblox.ApiProxy.Service.Controllers.ErrorController.RequestError(Nullable`1 code, String errorMessage) in C:\\teamcity-agent\\work\\d3b7ae92c30ca20c\\Services\\Roblox.ApiProxy\\Roblox.ApiProxy.Service\\Controllers\\ErrorController.cs:line 19
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_0.<InvokeActionMethodFilterAsynchronouslyRecursive>b__0()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_2.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__4()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__1(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c.<BeginExecuteCore>b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c.<BeginExecute>b__151_2(IAsyncResult asyncResult, Controller controller)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c.<BeginProcessRequest>b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+Exception Source: Roblox.ApiClientBase
+Exception TargetSite: Void ThrowConvertedException(System.Net.WebException, System.String, System.Nullable`1[System.Net.HttpStatusCode], System.String)
+Exception Data: System.Collections.ListDictionaryInternal

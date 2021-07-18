@@ -1,9 +1,9 @@
-import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from '../../../Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { Task } from '../../../../System/Threading/Task';
-import { PartialDatabase } from '../../../Mssql/Roblox.Mssql.PartialDatabase/Implementation/PartialDatabase';
-import { PartialDatabaseConditionType } from '../../../Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
+import { DFLog, DYNAMIC_LOGGROUP, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { Task } from 'System/Threading/Task';
+import { PartialDatabase } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Implementation/PartialDatabase';
+import { PartialDatabaseConditionType } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
 import { ICounter } from './ICounter';
-import { WebParsers } from '../../../Web/Parsers/Roblox.Web.Parsers/WebParsers';
+import { WebParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
 
 DYNAMIC_LOGGROUP('Tasks');
 export class Counter implements ICounter {

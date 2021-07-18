@@ -1,4 +1,4 @@
-import { UsernameValidationStatus } from '../Enumerations/UsernameValidationStatus';
+import { UsernameValidationStatus } from 'ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationStatus';
 
 /**
  * A result representing the information about if username is valid or not.

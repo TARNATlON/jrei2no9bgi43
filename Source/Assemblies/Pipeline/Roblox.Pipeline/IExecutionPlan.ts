@@ -1,4 +1,4 @@
-import { Task } from '../../../System/Threading/Task';
+import { Task } from 'System/Threading/Task';
 import { IPipelineHandler } from './IPipelineHandler';
 
 export interface IExecutionPlan<TInput, TOutput> {

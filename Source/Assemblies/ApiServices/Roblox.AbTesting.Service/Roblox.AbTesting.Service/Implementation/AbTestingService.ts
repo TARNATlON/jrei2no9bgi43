@@ -1,6 +1,6 @@
-import { IEnrollment } from '../../../../Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
-import { ExperimentStatusEnum } from '../../../../Platform/AbTesting/Roblox.Platform.AbTesting/ExperimentStatusEnum';
-import { SubjectTypeEnum } from '../../../../Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
+import { IEnrollment } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/IEnrollment';
+import { ExperimentStatusEnum } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/ExperimentStatusEnum';
+import { SubjectTypeEnum } from 'Assemblies/Platform/AbTesting/Roblox.Platform.AbTesting/SubjectTypeEnum';
 import { Response } from 'express';
 
 export class AbTestingService {

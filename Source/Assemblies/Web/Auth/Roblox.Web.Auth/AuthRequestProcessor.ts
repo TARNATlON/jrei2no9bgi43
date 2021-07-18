@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { UsersClient } from '../../../ApiClients/Roblox.Users.Client/Implementation/UsersClient';
-import { IServiceUsernameValidationResponse } from '../../../ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationResponse';
-import { IUsernameValidationRequest } from '../../../../ApiSites/Roblox.Auth.Api/Models/UsernameValidationRequest';
-import { IUsernameValidationResponse } from '../../../../ApiSites/Roblox.Auth.Api/Models/UsernameValidationResponse';
-import { UsernameValidationContext } from '../../../../ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationContext';
-import { Task } from '../../../../System/Threading/Task';
-import { ICustomError } from '../../../Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
-import { IUser } from '../../../Platform/Membership/Roblox.Platform.Membership/IUser';
-import { ErrorsClient } from '../../Util/Roblox.Web.Util/ErrorsClient';
-import { ContentTypeValidator } from '../../Util/Roblox.Web.Util/Validators/ContentTypeValidator';
-import { InputValidator } from '../../Util/Roblox.Web.Util/Validators/InputValidator';
+import { UsersClient } from 'Assemblies/ApiClients/Roblox.Users.Client/Implementation/UsersClient';
+import { IServiceUsernameValidationResponse } from 'Assemblies/ApiClients/Roblox.Users.Client/Models/IServiceUsernameValidationResponse';
+import { IUsernameValidationRequest } from 'ApiSites/Roblox.Auth.Api/Models/UsernameValidationRequest';
+import { IUsernameValidationResponse } from 'ApiSites/Roblox.Auth.Api/Models/UsernameValidationResponse';
+import { UsernameValidationContext } from 'ApiSites/Roblox.Auth.Api/Enumerations/UsernameValidationContext';
+import { Task } from 'System/Threading/Task';
+import { ICustomError } from 'Assemblies/Platform/ErrorModels/Roblox.Platform.ErrorModels/CustomError';
+import { IUser } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/IUser';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
+import { ContentTypeValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ContentTypeValidator';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
 
 export class AuthRequestProcessor {
 	private _response: Response;

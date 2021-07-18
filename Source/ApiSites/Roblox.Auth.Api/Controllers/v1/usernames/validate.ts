@@ -24,14 +24,14 @@
 */
 
 import { Request, Response } from 'express';
-import { HttpRequestMethodEnum } from '../../../../../Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
-import { AuthRequestProcessor } from '../../../../../Assemblies/Web/Auth/Roblox.Web.Auth/AuthRequestProcessor';
-import { Security } from '../../../../../Assemblies/Web/Auth/Roblox.Web.Auth/Security';
-import { ErrorsClient } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
-import { MethodValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
-import { ProtocolValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ProtocolValidator';
-import { IUsernameValidationRequest } from '../../../Models/UsernameValidationRequest';
-import { IUsernameValidationResponse } from '../../../Models/UsernameValidationResponse';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import { AuthRequestProcessor } from 'Assemblies/Web/Auth/Roblox.Web.Auth/AuthRequestProcessor';
+import { Security } from 'Assemblies/Web/Auth/Roblox.Web.Auth/Security';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { ProtocolValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ProtocolValidator';
+import { IUsernameValidationRequest } from 'ApiSites/Roblox.Auth.Api/Models/UsernameValidationRequest';
+import { IUsernameValidationResponse } from 'ApiSites/Roblox.Auth.Api/Models/UsernameValidationResponse';
 
 export default {
 	method: 'ALL',

@@ -12,7 +12,7 @@
 // Date: April 2000
 //
 
-import { Object } from '../../Object';
+import { Object } from 'System/Object';
 
 export abstract class RuntimeHelpers {
 	// GetObjectValue is intended to allow value classes to be manipulated as 'Object'

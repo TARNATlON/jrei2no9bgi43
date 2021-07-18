@@ -26,21 +26,9 @@
 */
 
 import { RequestHandler } from 'express-serve-static-core';
-import { FASTLOG5, FLog, LOGVARIABLE } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { OriginMaster } from '../../Util/Roblox.Web.Util/OriginMaster';
-
-LOGVARIABLE('Kestrul', 6);
+import { OriginMaster } from 'Assemblies/Web/Util/Roblox.Web.Util/OriginMaster';
 
 export const Kestrel = ((req, res, next) => {
-	FASTLOG5(
-		FLog['Kestrul'],
-		`[FLog::Kestrul] %s REQUEST ON %s://%s%s FROM %s`,
-		req.method.toUpperCase(),
-		req.protocol,
-		req.hostname,
-		req.url,
-		req.headers['user-agent'].toUpperCase(),
-	);
 	res.header({ server: 'Kestrel', 'X-DNS-Prefetch-Control': 'off' });
 	if (req.headers['origin'] === 'https://www.sitetest4.robloxlabs.com' || req.xhr) {
 		const om = new OriginMaster(res);

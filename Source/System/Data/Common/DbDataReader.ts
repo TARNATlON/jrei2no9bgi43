@@ -1,8 +1,8 @@
-import { IEnumerableBase } from '../../Collections/IEnumerableBase';
-import { IEnumeratorBase } from '../../Collections/IEnumeratorBase';
-import { IDisposable } from '../../IDisposable';
-import { IDataReader } from '../IDataReader';
-import { IDataRecord } from '../IDataRecord';
+import { IEnumerableBase } from 'System/Collections/IEnumerableBase';
+import { IEnumeratorBase } from 'System/Collections/IEnumeratorBase';
+import { IDisposable } from 'System/IDisposable';
+import { IDataReader } from 'System/Data/IDataReader';
+import { IDataRecord } from 'System/Data/IDataRecord';
 
 export abstract class DbDataReader implements IDataReader, IDisposable, IDataRecord, IEnumerableBase {
 	public abstract GetEnumerator?(): IEnumeratorBase;

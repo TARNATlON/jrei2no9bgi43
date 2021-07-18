@@ -26,7 +26,7 @@
 */
 
 import { Request, Response } from 'express';
-import { ErrorsClient } from '../../Util/Roblox.Web.Util/ErrorsClient';
+import { ErrorsClient } from 'Assemblies/Web/Util/Roblox.Web.Util/ErrorsClient';
 
 export const DefaultApi404 = (_req: Request, res: Response) => {
 	const errorsClient = new ErrorsClient(res);

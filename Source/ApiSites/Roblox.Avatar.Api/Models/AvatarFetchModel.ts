@@ -1,5 +1,5 @@
-import { AvatarScalingModel } from '../../../Services/Roblox.ApiProxy.Service/Models/AvatarScalingModel';
-import { AvatarBodyColorsModel } from '../../../Services/Roblox.ApiProxy.Service/Models/AvtarBodyColorsModel';
+import { AvatarScalingModel } from 'Services/Roblox.ApiProxy.Service/Models/AvatarScalingModel';
+import { AvatarBodyColorsModel } from 'Services/Roblox.ApiProxy.Service/Models/AvtarBodyColorsModel';
 import { AssetIdAndTypeModel } from './AssetIdAndTypeModel';
 import { EmoteModel } from './EmoteModel';
 

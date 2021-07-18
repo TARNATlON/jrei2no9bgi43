@@ -26,12 +26,12 @@
 */
 
 import { Request, Response } from 'express';
-import { ApiKeyValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
-import { InputValidator } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
-import { DFLog, FASTLOGS } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { ClientSettings } from '../../../../../Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
-import { KeyValueMapping } from '../../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { WebParsers } from '../../../../../Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
+import { ApiKeyValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
+import { DFLog, FASTLOGS } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ClientSettings } from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { WebParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/WebParsers';
 
 export default {
 	method: 'all',

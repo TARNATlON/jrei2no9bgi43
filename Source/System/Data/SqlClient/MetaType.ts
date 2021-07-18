@@ -1,6 +1,6 @@
-import { Type } from '../../Type';
-import { DbType } from '../DbType';
-import { SqlDbType } from '../SqlDbType';
+import { Type } from 'System/Type';
+import { DbType } from 'System/Data/DbType';
+import { SqlDbType } from 'System/Data/SqlDbType';
 
 export class MetaType {
 	public constructor(

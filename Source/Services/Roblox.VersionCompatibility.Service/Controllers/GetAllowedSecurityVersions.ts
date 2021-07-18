@@ -25,9 +25,49 @@
 	***
 */
 
+import { Request, Response } from 'express';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { ClientVersion } from 'Assemblies/Data/Versioning/Roblox.Data.Versioning/ClientVersion';
+import { HttpRequestMethodEnum } from 'Assemblies/Http/Roblox.Http/Enumeration/HttpRequestMethodEnum';
+import {
+	DFFlag,
+	DFLog,
+	DYNAMIC_FASTFLAGVARIABLE,
+	DYNAMIC_LOGVARIABLE,
+	FASTLOGNOFILTER,
+} from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ApiKeyValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/ApiKeyValidator';
+import { MethodValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/MethodValidator';
+import { ApiArrayResponse } from 'Assemblies/Web/WebAPI/Models/ApiArrayResponse';
+
+DYNAMIC_FASTFLAGVARIABLE('ReturnDefaultSecurityVersion', false);
+DYNAMIC_LOGVARIABLE('ClientVersioning', 7);
+
 export default {
 	method: 'all',
-	func: (_req: unknown, res: { send: (arg0: unknown) => void }): void => {
-		res.send({ data: ['0.235.0pcplayer'] });
+	func: async (request: Request<null, string[]>, response: Response<ApiArrayResponse<string>>) => {
+		const requestApiKey = KeyValueMapping.FetchKeyFromObjectCaseInsensitiveOrDefault(request.query, 'ApiKey', null);
+
+		FASTLOGNOFILTER(
+			DFLog('ClientVersioning'),
+			`[DFLog::ClientVersioning] GetAllowedSecurityVersions request from ${request.ip} (${
+				request['headers']['user-agent'] || 'No Useragent'
+			}) with the ApiKey '${requestApiKey ?? 'No Api Key'}'`,
+		);
+
+		const apiKeyValidatorClient = new ApiKeyValidator(response, undefined);
+		const methodValidatorClient = new MethodValidator(response);
+
+		if (methodValidatorClient.Validate(request.method, 'GET', true) === HttpRequestMethodEnum.UNKNOWN) return;
+		if (
+			!apiKeyValidatorClient.MultiValidate(
+				requestApiKey,
+				['2B4BA7FC-5843-44CF-B107-BA22D3319DCD', 'DAC86DA7-A4BC-4BFF-8CA4-8B54E1AC925B'],
+				true,
+			)
+		)
+			return;
+		if (DFFlag('ReturnDefaultSecurityVersion')) return response.send({ data: ['0.235.0pcplayer'] });
+		return response.send({ data: await ClientVersion.GetAllLatestSecurityVersionsForUniqueClients() });
 	},
 };

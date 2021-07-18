@@ -1,7 +1,7 @@
 /* @ts-ignore */
 
-import { SafeWaitHandle } from '../../Microsoft/Win32/SafeHandles/SafeWaitHandle';
-import { IDisposable } from '../IDisposable';
+import { SafeWaitHandle } from 'Microsoft/Win32/SafeHandles/SafeWaitHandle';
+import { IDisposable } from 'System/IDisposable';
 
 export enum OpenExistingResult {
 	Success,

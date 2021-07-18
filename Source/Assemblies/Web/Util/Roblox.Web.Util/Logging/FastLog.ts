@@ -7,11 +7,11 @@
 import {
 	ClientSettings,
 	FastVarType,
-} from '../../../../Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
+} from 'Assemblies/Platform/ClientSettings/Roblox.Platform.ClientSettings/Implementation/ClientSettingsUtil';
 import fs from 'fs';
-import { __baseDirName } from '../../../../Common/Constants/Roblox.Common.Constants/Directories';
+import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
 import dotenv from 'dotenv';
-import { Convert } from '../../../../../System/Convert';
+import { Convert } from 'System/Convert';
 
 dotenv.config({ path: __baseDirName + '/.env' });
 

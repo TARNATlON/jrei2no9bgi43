@@ -26,15 +26,14 @@
 */
 
 import crypto from 'crypto';
-import headers from '../../../Common/Constants/Roblox.Common.Constants/DefaultHeaders';
+import headers from 'Assemblies/Common/Constants/Roblox.Common.Constants/DefaultHeaders';
 import { RequestHandler } from 'express-serve-static-core';
-import { DFFlag, DFLog, DYNAMIC_LOGGROUP, FASTLOG2, FASTLOG5 } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { CommonValidator } from '../../Util/Roblox.Web.Util/Validators/CommonValidator';
-import { DateTimeConverter } from '../../Util/Roblox.Web.Util/Converters/DateTimeConverter';
-import { OriginMaster } from '../../Util/Roblox.Web.Util/OriginMaster';
-import { KeyValueMapping } from '../../../Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { DFFlag, DFLog, DYNAMIC_LOGGROUP, FASTLOG2 } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { CommonValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/CommonValidator';
+import { DateTimeConverter } from 'Assemblies/Web/Util/Roblox.Web.Util/Converters/DateTimeConverter';
+import { OriginMaster } from 'Assemblies/Web/Util/Roblox.Web.Util/OriginMaster';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
 
-DYNAMIC_LOGGROUP('Protocol77');
 DYNAMIC_LOGGROUP('Tasks');
 
 export const GlobalMiddleware = ((request, response, nextExecutingContext) => {
@@ -73,15 +72,6 @@ export const GlobalMiddleware = ((request, response, nextExecutingContext) => {
 			return;
 	}
 
-	FASTLOG5(
-		DFLog('Protocol77'),
-		`[DFLog::Protocol77] %s REQUEST ON %s://%s%s FROM %s`,
-		request.method.toUpperCase(),
-		request.protocol,
-		request.hostname,
-		request.url,
-		request.headers['user-agent'] || '',
-	);
 	response.header(headers);
 	if (!request.headers.cookie || (!request.headers.cookie.match(/__tid/) && request.hostname === 'www.sitetest4.robloxlabs.com'))
 		response.cookie('__tid', crypto.createHash('sha256').update(crypto.randomBytes(1000)).digest('hex'), {
@@ -128,7 +118,7 @@ export const GlobalMiddleware = ((request, response, nextExecutingContext) => {
 		request.hostname === 'www.sitetest4.robloxlabs.com' &&
 		request.path.toLowerCase() === '/'
 	) {
-		return response.redirect('http://www.sitetest4.robloxlabs.com/roblox.html');
+		//return response.redirect('http://www.sitetest4.robloxlabs.com/roblox.html');
 	}
 
 	// if (

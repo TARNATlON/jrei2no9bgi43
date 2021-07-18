@@ -26,11 +26,11 @@
 */
 
 import { Request, Response } from 'express';
-import { DFFlag, DFString, DYNAMIC_FASTFLAG, DYNAMIC_FASTSTRING } from '../../Util/Roblox.Web.Util/Logging/FastLog';
-import { User } from '../../../Platform/Membership/Roblox.Platform.Membership/User';
-import { InputValidator } from '../../Util/Roblox.Web.Util/Validators/InputValidator';
-import { KeyValueMapping } from '../../../Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { GUID } from '../../Util/Roblox.Web.Util/Generators/Guid';
+import { DFFlag, DFString, DYNAMIC_FASTFLAG, DYNAMIC_FASTSTRING } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { User } from 'Assemblies/Platform/Membership/Roblox.Platform.Membership/User';
+import { InputValidator } from 'Assemblies/Web/Util/Roblox.Web.Util/Validators/InputValidator';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { GUID } from 'Assemblies/Web/Util/Roblox.Web.Util/Generators/Guid';
 
 DYNAMIC_FASTFLAG('IsBannerEnabled');
 DYNAMIC_FASTSTRING('SiteBanner');

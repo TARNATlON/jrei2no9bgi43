@@ -26,8 +26,8 @@
 */
 
 import { Request, Response } from 'express';
-import { DFInt, DYNAMIC_FASTINTVARIABLE } from '../../../../../Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
-import { ContactsMetadataResponseModel } from '../../../Models/Response/ContactsMetadataResponseModel';
+import { DFInt, DYNAMIC_FASTINTVARIABLE } from 'Assemblies/Web/Util/Roblox.Web.Util/Logging/FastLog';
+import { ContactsMetadataResponseModel } from 'ApiSites/Roblox.Contacts.Api/Models/Response/ContactsMetadataResponseModel';
 
 DYNAMIC_FASTINTVARIABLE('MultiGetContactsMaxSize', 200);
 

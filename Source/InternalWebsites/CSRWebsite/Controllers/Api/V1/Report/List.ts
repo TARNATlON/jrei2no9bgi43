@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { KeyValueMapping } from '../../../../../../Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
-import { IReport } from '../../../../../../Assemblies/Moderation/Roblox.Moderation/Entities/IReport';
-import { Report } from '../../../../../../Assemblies/Moderation/Roblox.Moderation/Entities/Report';
+import { KeyValueMapping } from 'Assemblies/Common/Mapping/Roblox.Common.Mapping/KeyValueMapping';
+import { IReport } from 'Assemblies/Moderation/Roblox.Moderation/Entities/IReport';
+import { Report } from 'Assemblies/Moderation/Roblox.Moderation/Entities/Report';
 
 export default {
 	method: 'all',

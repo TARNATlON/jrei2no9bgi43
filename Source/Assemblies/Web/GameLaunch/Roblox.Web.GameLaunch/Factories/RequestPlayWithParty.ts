@@ -1,7 +1,7 @@
 import { Response } from 'express';
-import { ReportDebatableErrorDelegate } from '../Interfaces/IGameLaunchBase';
-import { IGameLaunchRequestBase } from '../Interfaces/IGameLaunchRequestBase';
-import { GameLaunchBase } from '../Models/Abstract/GameLaunchBase';
+import { ReportDebatableErrorDelegate } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Interfaces/IGameLaunchBase';
+import { IGameLaunchRequestBase } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Interfaces/IGameLaunchRequestBase';
+import { GameLaunchBase } from 'Assemblies/Web/GameLaunch/Roblox.Web.GameLaunch/Models/Abstract/GameLaunchBase';
 
 export class RequestPlayWithParty extends GameLaunchBase {
 	public constructor(response: Response) {
