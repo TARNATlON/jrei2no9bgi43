@@ -6,6 +6,8 @@ import { IPartialDatabaseRowsByKeyModel } from 'Assemblies/Mssql/Roblox.Mssql.Pa
 import { IPartialDatabaseRowsByKeyValueModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseRowsByKeyValueModel';
 import { IPartialDatabaseSetValuesModel } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Models/IPartialDatabaseSetValuesModel';
 import { PartialDatabaseConditionType } from 'Assemblies/Mssql/Roblox.Mssql.PartialDatabase/Enumeration/PartialDatabaseConditionType';
+import { LegacyCacheRepository } from 'Assemblies/Caching/Roblox.Caching/Legacy/LegacyCacheRepository';
+import { CachePolicy } from 'Assemblies/Caching/Roblox.Caching/Legacy/Enumeration/CachePolicy';
 
 export class PartialEntity<TEntity> {
 	private connection_: Connection;
@@ -44,6 +46,11 @@ export class PartialEntity<TEntity> {
 		return new Promise<[boolean, string, IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>]>((resumeFunction) => {
 			if (limit < 0) limit = 0;
 			const query = `SELECT ${key} FROM \`${this.dbName_}\`.\`${this.tableName_}\` LIMIT ${limit};`;
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForKey(key));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -56,6 +63,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForKey(key),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]);
 			});
 		});
@@ -72,6 +85,11 @@ export class PartialEntity<TEntity> {
 		return new Promise<[boolean, string, IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>]>((resumeFunction) => {
 			if (limit < 0) limit = 0;
 			const query = `SELECT * FROM \`${this.dbName_}\`.\`${this.tableName_}\` LIMIT ${limit};`;
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForAll(limit));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -87,6 +105,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForAll(limit),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]); // Do this for the time being so I can know what the response is.
 			});
 		});
@@ -109,6 +133,11 @@ export class PartialEntity<TEntity> {
 				query += `${key}${idx !== arr.length - 1 ? ', ' : ''}`;
 			});
 			query += ` FROM \`${this.dbName_}\`.\`${this.tableName_}\` LIMIT ${limit};`;
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForKeys(keys, limit));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -124,6 +153,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForKeys(keys, limit),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]); // Do this for the time being so I can know what the response is.
 			});
 		});
@@ -167,6 +202,12 @@ export class PartialEntity<TEntity> {
 			}
 			const query = `SELECT ${key} FROM \`${this.dbName_}\`.\`${this.tableName_}\` WHERE ${condition.Key} ${conditionType} '${condition.Value}';`;
 
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForConditionalKey(key, condition));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
+
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -179,6 +220,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForConditionalKey(key, condition),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]);
 			});
 		});
@@ -216,6 +263,12 @@ export class PartialEntity<TEntity> {
 			}
 			const query = `SELECT * FROM \`${this.dbName_}\`.\`${this.tableName_}\` WHERE ${condition.Key} ${conditionType} '${condition.Value}';`;
 
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForConditionalAllKey(condition));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
+
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -231,6 +284,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForConditionalAllKey(condition),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]); // Do this for the time being so I can know what the response is.
 			});
 		});
@@ -274,6 +333,12 @@ export class PartialEntity<TEntity> {
 			});
 			query += ` FROM \`${this.dbName_}\`.\`${this.tableName_}\` WHERE ${condition.Key} ${conditionType} '${condition.Value}';`;
 
+			const [wasCached, cachedValue] = PartialEntity._Cache.GetCachedValueJson<
+				IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>
+			>(this.ConstructCacheKeyForConditionalKeys(keys, condition));
+
+			if (wasCached) return resumeFunction([true, '', cachedValue]);
+
 			this.connection_.query(query, (err, results) => {
 				if (err) return resumeFunction([false, err.message, null]);
 				const rows: IPartialDatabaseRowsByKeyModel<TEntity, TKey, TEntity[TKey]>[] = [];
@@ -290,6 +355,12 @@ export class PartialEntity<TEntity> {
 					});
 					rows.push({ Data: entries });
 				});
+				PartialEntity._Cache.SetCachedValueJson<IPartialDatabaseRowResponseModel<TEntity, TKey, TEntity[TKey]>>(
+					this.ConstructCacheKeyForConditionalKeys(keys, condition),
+					{
+						Rows: rows,
+					},
+				);
 				return resumeFunction([true, '', { Rows: rows }]); // Do this for the time being so I can know what the response is.
 			});
 		});
@@ -341,6 +412,7 @@ export class PartialEntity<TEntity> {
 			const query = `UPDATE \`${this.dbName_}\`.\`${this.tableName_}\` SET ${key} = '${value}' WHERE ${condition.Key} ${conditionType} '${condition.Value}';`;
 
 			this.connection_.query(query, (err) => {
+				PartialEntity._Cache.RemoveKey(query);
 				if (err) return resumeFunction([false, err.message]);
 				return resumeFunction([true, '']);
 			});
@@ -385,6 +457,7 @@ export class PartialEntity<TEntity> {
 			});
 			query += ` WHERE ${condition.Key} ${conditionType} '${condition.Value}';`;
 			this.connection_.query(query, (err) => {
+				PartialEntity._Cache.RemoveKey(query);
 				if (err) return resumeFunction([false, err.message]);
 				return resumeFunction([true, '']);
 			});
@@ -415,6 +488,7 @@ export class PartialEntity<TEntity> {
 					`The primary key '${this.primaryKey_} for the table ''${this.dbName_}'.'${this.tableName_}' was not present in the request.`,
 				]);
 			this.connection_.query(query, (err) => {
+				PartialEntity._Cache.Clear();
 				if (err) return resumeFunction([false, err.message]);
 				return resumeFunction([true, '']);
 			});
@@ -455,9 +529,56 @@ export class PartialEntity<TEntity> {
 
 			query += qkeys + qvalues;
 			this.connection_.query(query, (err) => {
+				PartialEntity._Cache.Clear();
 				if (err) return resumeFunction([false, err.message]);
 				return resumeFunction([true, '']);
 			});
 		});
 	}
+
+	private ConstructCacheKeyForKey<TKey extends keyof TEntity>(key: TKey) {
+		return `GetKey:${this.dbName_}:${this.tableName_}:${key.toString()}`;
+	}
+
+	private ConstructCacheKeyForAll(limit: int) {
+		return `GetAll:${this.dbName_}:${this.tableName_}:${limit}`;
+	}
+
+	private ConstructCacheKeyForKeys<TKey extends keyof TEntity>(keys: TKey[], limit: int) {
+		let query = `GetAllByKeys:${this.dbName_}:${this.tableName_}:${limit}`;
+
+		keys.forEach((k) => {
+			query += `:${k}`;
+		});
+
+		return query;
+	}
+
+	private ConstructCacheKeyForConditionalKey<TKey extends keyof TEntity>(
+		key: TKey,
+		condition: IPartialDatabaseCondition<TEntity, TKey, TEntity[TKey]>,
+	) {
+		return `GetConditional:${this.dbName_}:${this.tableName_}:${key}:${condition.Key}:${condition.Condition}:${condition.Value}`;
+	}
+
+	private ConstructCacheKeyForConditionalAllKey<TKey extends keyof TEntity>(
+		condition: IPartialDatabaseCondition<TEntity, TKey, TEntity[TKey]>,
+	) {
+		return `GetAllConditional:${this.dbName_}:${this.tableName_}:${condition.Key}:${condition.Condition}:${condition.Value}`;
+	}
+
+	private ConstructCacheKeyForConditionalKeys<TKey extends keyof TEntity>(
+		keys: TKey[],
+		condition: IPartialDatabaseCondition<TEntity, TKey, TEntity[TKey]>,
+	) {
+		let query = `GetAllByKeysConditional:${this.dbName_}:${this.tableName_}:${condition.Key}:${condition.Condition}:${condition.Value}`;
+
+		keys.forEach((k) => {
+			query += `:${k}`;
+		});
+
+		return query;
+	}
+
+	private static readonly _Cache = new LegacyCacheRepository('PartialDatabase', CachePolicy.StaleAfterOneMinute);
 }
