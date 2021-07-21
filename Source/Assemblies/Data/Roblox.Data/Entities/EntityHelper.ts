@@ -12,6 +12,11 @@ export class EntityHelper {
 	public static DoGet<TIndex, TDal, TEntity>(dalGetter: () => any, index: TIndex): TEntity {
 		return;
 	}
+
+	public static DoEntityDALIdByLookup<TIndex>(dbInfo: dbInfo): TIndex {
+		return null;
+	}
+
 	public static DoEntityDALDelete(dbInfo: dbInfo) {}
 	public static DoEntityDALUpdate(dbInfo: dbInfo) {}
 	public static DoEntityDALInsert<TIndex>(dbInfo: dbInfo): TIndex {
@@ -37,5 +42,18 @@ export class EntityHelper {
 		entityGetter: GetByID<TEntity, TIndex>,
 	): TEntity[] {
 		return;
+	}
+
+	public static GetEntityByIDLookup<TIndex, TDal, TEntity>(
+		cacheInfo: ICacheInfo,
+		entityIdLookupKey: string,
+		entityIdGetter: () => TIndex,
+		dalGetter: (id: TIndex) => TDal,
+	): TEntity {
+		return null;
+	}
+
+	public static GetEntityIdByLookup<TIndex>(cacheInfo: ICacheInfo, entityIdLookupKey: string, entityIdGetter: () => TIndex): TIndex {
+		return null;
 	}
 }

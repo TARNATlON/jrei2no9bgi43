@@ -33,7 +33,7 @@ export class <DALCLASSNAME> {
 		<QUERYPARAMETERS>
 		];
 
-		const info = new dbInfo(<DALCLASSNAME>.<CONNECTIONSTRING>, '<INSERTPROCEDURE>', new SqlParameter('@ID', <IDSQLDBTYPE>), queryParameters);
+		const info = new dbInfo(<DALCLASSNAME>.<CONNECTIONSTRING>, '<INSERTPROCEDURE>', new SqlParameter('@ID', SqlDbType.<IDSQLDBTYPE>), queryParameters);
 
 		this._ID = EntityHelper.DoEntityDALInsert<<IDTYPE>>(info);
 	}

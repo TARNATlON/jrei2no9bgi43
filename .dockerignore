@@ -1,0 +1,16 @@
+node_modules/
+Source/Assemblies/Common/Constants/Roblox.Common.Constants/Directories.ts
+Source/Bin/
+.npmignore
+package-lock.json
+/Source/Bin
+DeploymentTooling
+server.log
+/Default/FormattedSettings.json
+/Default/OutputSettings.json
+/StaticPages/CDN/Roblox.SetupCDN
+/Source/Assemblies/Grid/Roblox.Grid.Rcc
+Nomad2
+DbTest.spec.ts
+ServiceClient.spec.ts
+log/

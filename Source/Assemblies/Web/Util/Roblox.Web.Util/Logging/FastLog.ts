@@ -12,6 +12,7 @@ import fs from 'fs';
 import { __baseDirName } from 'Assemblies/Common/Constants/Roblox.Common.Constants/Directories';
 import dotenv from 'dotenv';
 import { Convert } from 'System/Convert';
+import { format } from 'util';
 
 dotenv.config({ path: __baseDirName + '/.env' });
 
@@ -156,51 +157,6 @@ export const FastLogSetup = {
 };
 
 /**
- * Mimics the C++ function sprintf_s.
- * @param {...string[]} args The arguments to include, normally the 1st is the string to modify.
- * @returns {string} Returns a formatted string.
- * @internal This is internal.
- */
-const parameterizedString = (...args: string[]): string => {
-	const string = args[0];
-	let i = 1;
-	return string.replace(/%((%)|s|d|f|lf|i|x|X|u)/g, function (m: any) {
-		// m is the matched format, e.g. %s, %d
-		let val = null;
-		if (m[2]) {
-			val = m[2];
-		} else {
-			val = args[i];
-			if (val !== null) {
-				// A switch statement so that the formatter can be extended. Default is %s
-				switch (m) {
-					case '%d' || '%f' || '%lf':
-						val = parseFloat(val);
-						if (isNaN(val)) {
-							val = 0;
-						}
-						break;
-					case '%i' || '%u':
-						val = parseInt(val);
-						if (isNaN(val)) {
-							val = 0;
-						}
-						break;
-					case '%x':
-						val = val.toString(16).toLowerCase();
-						break;
-					case '%X':
-						val = val.toString(16).toUpperCase();
-						break;
-				}
-			}
-			i++;
-		}
-		return val;
-	});
-};
-
-/**
  * Sets up FLog initially.
  * @internal This is internal.
  */
@@ -305,25 +261,17 @@ export function ResetFastLog() {
  * @returns {void} Returns nothing.
  * @internal This is internal.
  */
-function printMessage(
-	level: number,
-	threadId: number,
-	timeStamp: string,
-	message: string,
-	arg0: any,
-	arg1: any,
-	arg2: any,
-	arg3: any,
-	arg4: any,
-): void {
-	const formatted = parameterizedString(message, arg0, arg1, arg2, arg3, arg4);
+function printMessage(level: number, threadId: number, timeStamp: string, message: string, ...args: any[]): void {
+	const formatted = format(message, ...args.filter((n) => n));
 	const out = `${timeStamp},${process.uptime().toPrecision(6)},${threadId.toString(16)},${Math.floor(level) || 1} ${formatted}`;
 	console.log(out);
-	// We only FLog to file on FastLogss greater than 7
-	if (level >= 7)
-		fs.appendFileSync(__baseDirName + `/server.log`, `${out}\n`, {
+	// We only FLog to file on FastLogs greater than 7
+	if (level >= 7) {
+		if (!fs.existsSync(__baseDirName + '/log/')) fs.mkdirSync(__baseDirName + '/log/');
+		fs.appendFileSync(__baseDirName + `/log/log_${process.pid}.log`, `${out}\n`, {
 			encoding: 'utf-8',
 		});
+	}
 }
 /**
  * A function that checks the LogLevel to be greater than 5.
@@ -351,7 +299,7 @@ function FastLog(level: number, message: string, arg0: any, arg1: any, arg2: any
  */
 export const FASTLOG = (group: number, message: string): void => {
 	do {
-		if (group) FastLog(group, message, null, null, null, null, null);
+		if (group) FastLog(group, message, undefined, undefined, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -364,7 +312,7 @@ export const FASTLOG = (group: number, message: string): void => {
  */
 export const FASTLOG1 = (group: number, message: string, arg0: any): void => {
 	do {
-		if (group) FastLog(group, message, arg0, null, null, null, null);
+		if (group) FastLog(group, message, arg0, undefined, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -378,7 +326,7 @@ export const FASTLOG1 = (group: number, message: string, arg0: any): void => {
  */
 export const FASTLOG2 = (group: number, message: string, arg0: any, arg1: any): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, null, null, null);
+		if (group) FastLog(group, message, arg0, arg1, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -393,7 +341,7 @@ export const FASTLOG2 = (group: number, message: string, arg0: any, arg1: any): 
  */
 export const FASTLOG3 = (group: number, message: string, arg0: any, arg1: any, arg2: any): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, arg2, null, null);
+		if (group) FastLog(group, message, arg0, arg1, arg2, undefined, undefined);
 	} while (0);
 };
 
@@ -409,7 +357,7 @@ export const FASTLOG3 = (group: number, message: string, arg0: any, arg1: any, a
  */
 export const FASTLOG4 = (group: number, message: string, arg0: any, arg1: any, arg2: any, arg3: any): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, arg2, arg3, null);
+		if (group) FastLog(group, message, arg0, arg1, arg2, arg3, undefined);
 	} while (0);
 };
 
@@ -439,7 +387,7 @@ export const FASTLOG5 = (group: number, message: string, arg0: any, arg1: any, a
  */
 export const FASTLOGS = (group: number, message: string, sarg: string): void => {
 	do {
-		if (group) FastLog(group, message, sarg, null, null, null, null);
+		if (group) FastLog(group, message, sarg, undefined, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -452,7 +400,7 @@ export const FASTLOGS = (group: number, message: string, sarg: string): void => 
  */
 export const FASTLOG1F = (group: number, message: string, arg0: number) => {
 	do {
-		if (group) FastLog(group, message, arg0, null, null, null, null);
+		if (group) FastLog(group, message, arg0, undefined, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -466,7 +414,7 @@ export const FASTLOG1F = (group: number, message: string, arg0: number) => {
  */
 export const FASTLOG2F = (group: number, message: string, arg0: number, arg1: number): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, null, null, null);
+		if (group) FastLog(group, message, arg0, arg1, undefined, undefined, undefined);
 	} while (0);
 };
 
@@ -481,7 +429,7 @@ export const FASTLOG2F = (group: number, message: string, arg0: number, arg1: nu
  */
 export const FASTLOG3F = (group: number, message: string, arg0: number, arg1: number, arg2: number): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, arg2, null, null);
+		if (group) FastLog(group, message, arg0, arg1, arg2, undefined, undefined);
 	} while (0);
 };
 
@@ -497,7 +445,7 @@ export const FASTLOG3F = (group: number, message: string, arg0: number, arg1: nu
  */
 export const FASTLOG4F = (group: number, message: string, arg0: number, arg1: number, arg2: number, arg3: number): void => {
 	do {
-		if (group) FastLog(group, message, arg0, arg1, arg2, arg3, null);
+		if (group) FastLog(group, message, arg0, arg1, arg2, arg3, undefined);
 	} while (0);
 };
 
@@ -508,7 +456,7 @@ export const FASTLOG4F = (group: number, message: string, arg0: number, arg1: nu
  * @returns {void} Returns nothing.
  */
 export const FASTLOGNOFILTER = (group: number, message: string): void => {
-	FastLog(group, message, null, null, null, null, null);
+	FastLog(group, message, undefined, undefined, undefined, undefined, undefined);
 };
 
 /**
@@ -520,7 +468,7 @@ export const FASTLOGNOFILTER = (group: number, message: string): void => {
  * @returns {void} Returns nothing.
  */
 export const FASTLOGNOFILTER2 = (group: number, message: string, arg0: any, arg1: any) => {
-	FastLog(group, message, arg0, arg1, null, null, null);
+	FastLog(group, message, arg0, arg1, undefined, undefined, undefined);
 };
 
 /**
@@ -775,4 +723,10 @@ export function RegisterFlag(groupName: string) {
 	FFlag[groupName] = true;
 
 	return true;
+}
+
+export function ClearLocalLog() {
+	FASTLOG(7, '[FLog::LocalLog] Clean out local log.');
+	fs.rmSync(__baseDirName + '/log/', { recursive: true, force: true });
+	fs.mkdirSync(__baseDirName + '/log/');
 }

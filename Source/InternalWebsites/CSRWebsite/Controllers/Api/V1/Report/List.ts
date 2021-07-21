@@ -5,14 +5,14 @@ import { Report } from 'Assemblies/Moderation/Roblox.Moderation/Entities/Report'
 
 export default {
 	method: 'all',
-	func: async (request: Request, response: Response) => {
-		const e = await Report.GetReports();
+	func: async (_request: Request, response: Response) => {
+		const remoteReports = await Report.GetReports();
 
 		const results = [];
 
-		for (let i = 0; i < e.length; i++) {
-			const obj: IReport = { ...e[i], Created: undefined, Updated: undefined };
-			results.push(KeyValueMapping.BringKeyMapKeysToUppercase(obj));
+		for (let i = 0; i < remoteReports.length; i++) {
+			const formattedResults: IReport = { ...remoteReports[i], Created: undefined, Updated: undefined };
+			results.push(KeyValueMapping.BringKeyMapKeysToUppercase(formattedResults));
 		}
 
 		response.send({ error: 0, msg: 'Success', result: results });

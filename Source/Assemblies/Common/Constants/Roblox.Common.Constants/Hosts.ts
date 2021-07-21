@@ -64,7 +64,7 @@ export default {
 	PrivateMessagesHost: 'privatemessages.sitetest4.robloxlabs.com',
 	EconomyHost: 'economy.sitetest4.robloxlabs.com',
 	GamesHost: 'games.sitetest4.robloxlabs.com',
-	RealTimeHost: 'realtime.sitetest4.robloxlabs.com',
+	RealtimeHost: 'realtime.sitetest4.robloxlabs.com',
 	ThumbsHost: 'thumbnails.sitetest4.robloxlabs.com',
 	PresenceHost: 'presence.sitetest4.robloxlabs.com',
 	GroupsHost: 'groups.sitetest4.robloxlabs.com',

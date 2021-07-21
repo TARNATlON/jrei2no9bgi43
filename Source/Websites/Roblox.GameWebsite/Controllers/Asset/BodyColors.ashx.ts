@@ -28,14 +28,13 @@
 */
 
 import { Request, Response } from 'express';
-import { CachePolicy } from 'Assemblies/Http/HttpClientInvoker/Roblox.Http.HttpClientInvoker/Models/IClientRequest';
 import { AvatarRequestProcessor } from 'Assemblies/Web/Avatars/Roblox.Web.Avatars/AvatarRequestProcessor';
 import { BodyColorsRequest } from 'Websites/Roblox.GameWebsite/Models/Game/BodyColorsRequest';
 
 export default {
 	method: 'all',
 	func: async (request: Request<null, string, null, BodyColorsRequest>, response: Response<string>) => {
-		const cachedRequestProcessor = new AvatarRequestProcessor(CachePolicy.StaleAfterOneMinute, response);
+		const cachedRequestProcessor = new AvatarRequestProcessor(response);
 
 		var [UserID, UserName] = cachedRequestProcessor.ExtractDataFromQueryStringForBodyColorsRequest(request);
 

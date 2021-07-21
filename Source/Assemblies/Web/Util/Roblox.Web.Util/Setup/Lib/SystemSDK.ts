@@ -226,7 +226,7 @@ export class SystemSDK {
 				}
 			});
 			if (baselineSslServer) {
-				const wssServer = new WebsocketServer({ server: baselineSslServer, port: 8000, host: opts.apiName });
+				const wssServer = new WebsocketServer({ server: baselineSslServer, host: opts.apiName });
 				if (opts.logSetups)
 					FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING UPGRADE https://%s:8000`, opts.apiName, opts.apiName);
 				baselineSslServer.on('upgrade', (r, s, h) => {
@@ -254,7 +254,7 @@ export class SystemSDK {
 					});
 				});
 			}
-			const wsServer = new WebsocketServer({ server: baselineServer, port: 5000, host: opts.apiName });
+			const wsServer = new WebsocketServer({ server: baselineServer, host: opts.apiName });
 			if (opts.logSetups) FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING UPGRADE http://%s:5000`, opts.apiName, opts.apiName);
 			baselineServer.on('upgrade', (request, socket, upgradeHeader) => {
 				let isValid = false;

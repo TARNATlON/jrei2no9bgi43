@@ -134,7 +134,7 @@ export class Counter implements IRobloxEntity<number, CounterDAL>, ICounter {
 		typeof Counter.toString(),
 	);
 
-	public *BuildEntityIDLookups(): Generator<any, string[], any> {
-		return yield [];
+	public *BuildEntityIDLookups() {
+		return yield null;
 	}
 }

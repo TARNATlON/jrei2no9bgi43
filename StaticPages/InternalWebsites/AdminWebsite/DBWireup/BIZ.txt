@@ -64,7 +64,7 @@ export class <BIZCLASSNAME> implements IRobloxEntity<<IDTYPE>, <CLASSNAME>> {
 		typeof <BIZCLASSNAME>.toString(),
 	);
 
-	public *BuildEntityIDLookups(): Generator<any, string[], any> {
-		return yield [];
+	public *BuildEntityIDLookups() {
+		return yield null;
 	}
 }

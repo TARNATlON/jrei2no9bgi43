@@ -7,15 +7,15 @@ import { Convert } from 'System/Convert';
 export default {
 	method: 'all',
 	func: async (request: Request, response: Response) => {
-		const e = await ExploitReport.GetReportsByIndexID(
+		const remoteReports = await ExploitReport.GetReportsByIndexID(
 			Convert.ToInt64(KeyValueMapping.FetchKeyFromObjectCaseInsensitive<long>(request.query, 'ID')),
 		);
 
 		const results = [];
 
-		for (let i = 0; i < e.length; i++) {
-			const obj: IExploitReport = { ...e[i], Created: undefined, Updated: undefined };
-			results.push(KeyValueMapping.BringKeyMapKeysToUppercase(obj));
+		for (let i = 0; i < remoteReports.length; i++) {
+			const formattedResult: IExploitReport = { ...remoteReports[i], Created: undefined, Updated: undefined };
+			results.push(KeyValueMapping.BringKeyMapKeysToUppercase(formattedResult));
 		}
 
 		response.send({ error: 0, msg: 'Success', result: results });

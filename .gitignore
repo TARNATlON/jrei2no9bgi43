@@ -56,3 +56,4 @@ server.log
 Nomad2
 DbTest.spec.ts
 ServiceClient.spec.ts
+log/

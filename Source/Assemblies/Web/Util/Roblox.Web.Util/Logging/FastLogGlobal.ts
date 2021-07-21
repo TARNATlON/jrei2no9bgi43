@@ -56,7 +56,7 @@ export class FastLogGlobal {
 		SYNCHRONIZED_LOGVARIABLE(Hosts['PrivateMessagesHost'], 0);
 		SYNCHRONIZED_LOGVARIABLE(Hosts['EconomyHost'], 0);
 		SYNCHRONIZED_LOGVARIABLE(Hosts['GamesHost'], 0);
-		SYNCHRONIZED_LOGVARIABLE(Hosts['RealTimeHost'], 0);
+		SYNCHRONIZED_LOGVARIABLE(Hosts['RealtimeHost'], 0);
 		SYNCHRONIZED_LOGVARIABLE(Hosts['ThumbsHost'], 0);
 		SYNCHRONIZED_LOGVARIABLE(Hosts['PresenceHost'], 0);
 		SYNCHRONIZED_LOGVARIABLE(Hosts['GroupsHost'], 0);
@@ -151,7 +151,7 @@ export class FastLogGlobal {
 		SYNCHRONIZED_LOGGROUP(Hosts['PrivateMessagesHost']);
 		SYNCHRONIZED_LOGGROUP(Hosts['EconomyHost']);
 		SYNCHRONIZED_LOGGROUP(Hosts['GamesHost']);
-		SYNCHRONIZED_LOGGROUP(Hosts['RealTimeHost']);
+		SYNCHRONIZED_LOGGROUP(Hosts['RealtimeHost']);
 		SYNCHRONIZED_LOGGROUP(Hosts['ThumbsHost']);
 		SYNCHRONIZED_LOGGROUP(Hosts['PresenceHost']);
 		SYNCHRONIZED_LOGGROUP(Hosts['GroupsHost']);
