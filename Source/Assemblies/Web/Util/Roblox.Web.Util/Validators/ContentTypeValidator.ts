@@ -38,6 +38,7 @@ export class ContentTypeValidator<TResponse extends Response> implements IServic
 			return false;
 		}
 		originalContentType = originalContentType.toLowerCase();
+		originalContentType = originalContentType.split(';')[0];
 		let contentTypeIsValid = false;
 		if (contentTypesToValidate.length > 0) {
 			contentTypesToValidate.every((contentType) => {

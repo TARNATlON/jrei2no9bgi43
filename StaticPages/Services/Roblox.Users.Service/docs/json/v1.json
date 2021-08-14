@@ -1,0 +1,164 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1.1",
+		"title": "Ephemeral Counters Api v1.1"
+	},
+	"host": "ephemeralcounters.api.sitetest4.robloxlabs.com",
+	"schemes": [
+		"https"
+	],
+	"paths": {
+		"/v1/ChangeUsername": {
+			"post": {
+				"tags": [
+					"Names"
+				],
+				"summary": "Changes the user name for the given user.",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "apiKey",
+						"in": "header",
+						"required": true,
+						"type": "string",
+						"description": "The ApiKey authorized to use this service."
+					},
+					{
+						"name": "request.model",
+						"in": "body",
+						"required": true,
+						"type": "object",
+						"schema": {
+							"$ref": "#/definitions/Roblox.Users.Service.Models.ChangeUsernameRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Roblox.ApiV2.Models.PayloadResponse"
+						}
+					},
+					"409": {
+						"description": "0: InvalidCurrentUsername.\n1: InvalidNewUsername\n3: InvalidUser",
+						"schema": {
+							"$ref": "#/definitions/Roblox.ApiV2.Models.PayloadResponse"
+						}
+					}
+				},
+				"properties": {
+					"internal": true,
+					"metricIds": [
+						"Users:ChangeUsername"
+					]
+				}
+			}
+		},
+		"/v1/ChangeDisplayName": {
+			"post": {
+				"tags": [
+					"Names"
+				],
+				"summary": "Changes the display name for the given user.",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [],
+				"parameters": [
+					{
+						"name": "apiKey",
+						"in": "header",
+						"required": true,
+						"type": "string",
+						"description": "The ApiKey authorized to use this service."
+					},
+					{
+						"name": "request.model",
+						"in": "body",
+						"required": true,
+						"type": "object",
+						"schema": {
+							"$ref": "#/definitions/Roblox.Users.Service.Models.ChangeDisplayNameRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Roblox.ApiV2.Models.PayloadResponse"
+						}
+					},
+					"409": {
+						"description": "0: InvalidCurrentDisplayName.\n1: InvalidNewDisplayName\n3: InvalidUser",
+						"schema": {
+							"$ref": "#/definitions/Roblox.ApiV2.Models.PayloadResponse"
+						}
+					}
+				},
+				"properties": {
+					"internal": true,
+					"metricIds": [
+						"Users:ChangeUsername"
+					]
+				}
+			}
+		}
+	},
+	"definitions": {
+		"Roblox.Users.Service.Models.ChangeUsernameRequest": {
+			"type": "object",
+			"properties": {
+				"currentName": {
+					"type": "string",
+					"description": "The current username of the user, if it is not correct, or is not set, it will throw an InvalidCurrentUsername exception."
+				},
+				"newName": {
+					"type": "string",
+					"description": "The new username of the user, if it matches the old username, or is not set, it will throw an InvalidNewUsername exception."
+				},
+				"userId": {
+					"type": "number",
+					"format": "int64",
+					"description": "The ID of the user, if the user is not found, or is not set, it will throw an InvalidUser exception."
+				}
+			}
+		},
+		"Roblox.Users.Service.Models.ChangeDisplayNameRequest": {
+			"type": "object",
+			"properties": {
+				"currentDisplayName": {
+					"type": "string",
+					"description": "The current display name of the user, if it is not correct, or is not set, it will throw an InvalidCurrentDisplayName exception."
+				},
+				"newDisplayName": {
+					"type": "string",
+					"description": "The new display name of the user, if it matches the old username, or is not set, it will throw an InvalidNewDisplayName exception."
+				},
+				"userId": {
+					"type": "number",
+					"format": "int64",
+					"description": "The ID of the user, if the user is not found, or is not set, it will throw an InvalidUser exception."
+				}
+			}
+		},
+		"Roblox.ApiV2.Models.PayloadResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "object",
+					"nullable": true
+				}
+			}
+		}
+	}
+}

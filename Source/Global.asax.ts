@@ -1318,14 +1318,7 @@ FastLogGlobal.Init();
 		const httpsPort = isClosureTest || isNginx ? 4343 : 443;
 		SystemSDK.ServerStarter(ImagesCDNServer, Hosts['ImagesCDN'], !isNginx, true, httpPort, httpsPort);
 		SystemSDK.ServerStarter(RobloxWebsiteServer, Hosts['WebHost'], !isNginx, true, httpPort, httpsPort);
-		const [ROBLOX_API_HTTP, ROBLOX_API_HTTPS] = SystemSDK.ServerStarter(
-			ApiProxyServer,
-			Hosts['ApiProxyHost'],
-			true,
-			true,
-			httpPort,
-			httpsPort,
-		);
+		SystemSDK.ServerStarter(ApiProxyServer, Hosts['ApiProxyHost'], true, true, httpPort, httpsPort);
 		SystemSDK.ServerStarter(StaticCDNServer, Hosts['StaticCDN'], !isNginx, true, httpPort, httpsPort);
 		SystemSDK.ServerStarter(JavaScriptCDNServer, Hosts['JavaScriptCDN'], !isNginx, true, httpPort, httpsPort);
 		SystemSDK.ServerStarter(CSSCDNServer, Hosts['CSSCDN'], !isNginx, true, httpPort, httpsPort);
@@ -1433,7 +1426,6 @@ FastLogGlobal.Init();
 			}
 		})();
 
-		SystemSDK.WebsocketStarter(ROBLOX_API_HTTP, ROBLOX_API_HTTPS, '/Source/Bin/WebSockets/Roblox.Api', Hosts.ApiProxyHost);
 		SystemSDK.WebsocketStarter(
 			ROBLOX_REAL_TIME_HTTP,
 			ROBLOX_REAL_TIME_HTTPS,

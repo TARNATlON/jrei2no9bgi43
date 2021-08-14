@@ -38,6 +38,7 @@
 		"typescript": "^4.2.3"
 	},
 	"dependencies": {
+		"@mfd/signalr": "^2.0.0",
 		"args-parser": "^1.2.0",
 		"axios": "^0.21.1",
 		"babel-jest": "^27.0.2",

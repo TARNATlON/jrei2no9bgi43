@@ -30,11 +30,12 @@ import { json as jparser, Router, static as Pages } from 'express';
 import ServeIndex from 'serve-index';
 import bparser from 'body-parser';
 import cparser from 'cookie-parser';
-import { Server as BaseServer, IncomingMessage } from 'http';
-import Ssl, { Server as SslServer } from 'https';
+import { Server as BaselineServer, IncomingMessage } from 'http';
+import Ssl, { Server as BaselineSslServer } from 'https';
 import SslV2 from 'spdy';
-import { readFileSync, readdirSync, existsSync as FileOrDirectoryExists } from 'fs';
+import { readFileSync, existsSync as FileOrDirectoryExists } from 'fs';
 import Socket, { Server as WebsocketServer } from 'ws';
+import { Socket as DuplexSocket } from 'net';
 import {
 	DFFlag,
 	DFLog,
@@ -56,6 +57,7 @@ import { WebControllerParsers } from 'Assemblies/Web/Parsers/Roblox.Web.Parsers/
 import { IPageDirectoryOptions } from 'Assemblies/Web/Util/Roblox.Web.Util/Setup/Interfaces/IPageDirectoryOptions';
 import { IPageOptions } from 'Assemblies/Web/Util/Roblox.Web.Util/Setup/Interfaces/IPageOptions';
 import { IRoutingOptions } from 'Assemblies/Web/Util/Roblox.Web.Util/Setup/Interfaces/IRoutingOptions';
+import { IWebsocketRoute } from '../Interfaces/IWebsocketRoute';
 
 FastLogGlobal.IncludeHostLogLevels();
 
@@ -144,10 +146,10 @@ export class SystemSDK {
 		useHttp: bool = true,
 		httpPort: int = 80,
 		httpsPort: int = 443,
-	): [BaseServer, SslServer] {
+	): [BaselineServer, BaselineSslServer] {
 		try {
-			let baselineSslServer: SslServer;
-			let baseLineServer: BaseServer;
+			let baselineSslServer: BaselineSslServer;
+			let baseLineServer: BaselineServer;
 			if (useHttps)
 				baselineSslServer = (DFFlag('GlobalHTTP2Enabled') ? SslV2 : Ssl)
 					.createServer(
@@ -170,8 +172,13 @@ export class SystemSDK {
 		}
 	}
 
-	public static async WebsocketStarter(baselineServer: BaseServer, baselineSslServer: SslServer, dir: string, apiName: string) {
-		await SystemSDK.MapWebsocketServer(baselineServer, baselineSslServer, {
+	public static async WebsocketStarter(
+		baselineServer: BaselineServer,
+		baselineSslServer: BaselineSslServer,
+		dir: string,
+		apiName: string,
+	) {
+		await SystemSDK.MapWebsocketServers(baselineServer, baselineSslServer, {
 			path: __baseDirName + dir,
 			shouldHandleUpgrade: true,
 			apiName: apiName,
@@ -179,108 +186,161 @@ export class SystemSDK {
 		});
 	}
 
-	private static async MapWebsocketServer(
-		baselineServer: BaseServer,
-		baselineSslServer?: SslServer,
-		opts?: IWebsocketOptions,
+	private static async MapWebsocketServers(
+		baselineServer: BaselineServer,
+		baselineSslServer?: BaselineSslServer,
+		options?: IWebsocketOptions,
 	): Promise<void> {
 		return new Promise<void>((resumeFunction, errorFunction) => {
-			let Sockets: string[];
-			const maps: {
-				dir: string;
-				func: (request: Socket, Response: IncomingMessage) => unknown;
-			}[] = [];
-			try {
-				Sockets = readdirSync((opts !== undefined ? opts.path : __baseDirName + '/sockets') || __baseDirName + '/sockets');
-			} catch (err) {
-				return FASTLOG2(SFLog[opts.apiName], '[SFLog::%s] %s', opts.apiName, err.message);
-			}
-			FASTLOG3(SFLog[opts.apiName], `[SFLog::%s] https://%s has %d websocket(s)`, opts.apiName, opts.apiName, Sockets.length);
-			Sockets.forEach((v) => {
-				if (!v.includes('.js.map') || !v.includes('.d.ts')) {
-					let map: {
-						default: { dir: string; func: (request: Socket, Response: IncomingMessage) => unknown };
-					};
+			const rootDirectory = (options !== undefined ? options.path : __baseDirName + '/sockets') || __baseDirName + '/sockets';
+			const webSocketRoutes = SystemSDK.ExtractWebsocketRoutes(rootDirectory, options);
+			if (webSocketRoutes === null) return;
 
-					try {
-						map = require(((opts !== undefined ? opts.path + '/' : __baseDirName + '/sockets/') ||
-							__baseDirName + '/sockets/') + v);
-					} catch (err) {
-						return console.error(err);
-					}
+			FASTLOG3(
+				SFLog[options.apiName],
+				`[SFLog::%s] https://%s has %d websocket(s)`,
+				options.apiName,
+				options.apiName,
+				webSocketRoutes.length,
+			);
+			const clientRouteMaps = SystemSDK.ExtractWebsocketClientRouteMaps(rootDirectory, webSocketRoutes, options, errorFunction);
 
-					if (map.default) {
-						if (!map.default.dir) return;
-						if (!map.default.func) return;
-						FASTLOG3(
-							SFLog[opts.apiName],
-							`[SFLog::%s] MAPPING WEBSOCKET wss://%s%s`,
-							opts.apiName,
-							opts.apiName,
-							map.default.dir,
-						);
-						maps.push(map.default);
-					} else {
-						return errorFunction(`${v} had no default export.`);
-					}
-				}
-			});
 			if (baselineSslServer) {
-				const wssServer = new WebsocketServer({ server: baselineSslServer, host: opts.apiName });
-				if (opts.logSetups)
-					FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING UPGRADE https://%s:8000`, opts.apiName, opts.apiName);
-				baselineSslServer.on('upgrade', (r, s, h) => {
-					let isValid = false;
-					maps.forEach((v) => {
-						if (r.url.split('?').shift() === v.dir) {
-							wssServer.handleUpgrade(r, s, h, (s2) => {
-								wssServer.emit('connection', s2, r);
-							});
-							isValid = true;
-						}
-					});
-					if (!isValid) {
-						s.write('https/3.0 404 Socket Not Found\r\n\r\n');
-						return s.destroy();
-					}
+				const baselineSslWebsocketServer = new WebsocketServer({ server: baselineSslServer, port: 8000, host: options.apiName });
+				if (options.logSetups)
+					FASTLOG2(SFLog[options.apiName], `[SFLog::%s] MAPPING UPGRADE https://%s:8000`, options.apiName, options.apiName);
+				baselineSslServer.on('upgrade', (incomingMessage: IncomingMessage, duplexSocket: DuplexSocket, upgradeHeader: Buffer) => {
+					SystemSDK.HandleServerUpgrade(
+						clientRouteMaps,
+						incomingMessage,
+						baselineSslWebsocketServer,
+						duplexSocket,
+						upgradeHeader,
+					);
 				});
-				if (opts.logSetups)
-					FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING CONNECT https://%s:8000`, opts.apiName, opts.apiName);
-				wssServer.on('connection', (s, r) => {
-					maps.forEach((v) => {
-						if (r.url.split('?').shift() === v.dir) {
-							return v.func(s, r);
-						}
-					});
+				if (options.logSetups)
+					FASTLOG2(SFLog[options.apiName], `[SFLog::%s] MAPPING CONNECT https://%s:8000`, options.apiName, options.apiName);
+				baselineSslWebsocketServer.on('connection', (client: Socket, incomingClientRequest) => {
+					SystemSDK.GetWebsocketRouteAndInvokeCallback(clientRouteMaps, incomingClientRequest, client);
 				});
 			}
-			const wsServer = new WebsocketServer({ server: baselineServer, host: opts.apiName });
-			if (opts.logSetups) FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING UPGRADE http://%s:5000`, opts.apiName, opts.apiName);
-			baselineServer.on('upgrade', (request, socket, upgradeHeader) => {
-				let isValid = false;
-				maps.forEach((v) => {
-					if (request.url.split('?').shift() === v.dir) {
-						wsServer.handleUpgrade(request, socket, upgradeHeader, (socketHandle) => {
-							wsServer.emit('connection', socketHandle, request);
-						});
-						isValid = true;
-					}
-				});
-				if (!isValid) {
-					socket.write('https/3.0 404 Socket Not Found\r\n\r\n');
-					return socket.destroy();
-				}
+			const baselineWebsocketServer = new WebsocketServer({ server: baselineServer, port: 5000, host: options.apiName });
+			if (options.logSetups)
+				FASTLOG2(SFLog[options.apiName], `[SFLog::%s] MAPPING UPGRADE http://%s:5000`, options.apiName, options.apiName);
+			baselineServer.on('upgrade', (incomingMessage: IncomingMessage, duplexSocket: DuplexSocket, upgradeHeader: Buffer) => {
+				SystemSDK.HandleServerUpgrade(clientRouteMaps, incomingMessage, baselineWebsocketServer, duplexSocket, upgradeHeader);
 			});
-			if (opts.logSetups) FASTLOG2(SFLog[opts.apiName], `[SFLog::%s] MAPPING CONNECT http://%s:5000`, opts.apiName, opts.apiName);
-			wsServer.on('connection', (s, r) => {
-				maps.forEach((v) => {
-					if (r.url.split('?').shift() === v.dir) {
-						return v.func(s, r);
-					}
-				});
+			if (options.logSetups)
+				FASTLOG2(SFLog[options.apiName], `[SFLog::%s] MAPPING CONNECT http://%s:5000`, options.apiName, options.apiName);
+			baselineWebsocketServer.on('connection', (client: Socket, incomingClientRequest: IncomingMessage) => {
+				SystemSDK.GetWebsocketRouteAndInvokeCallback(clientRouteMaps, incomingClientRequest, client);
 			});
 			resumeFunction();
 		});
+	}
+
+	private static HandleServerUpgrade(
+		clientRouteMaps: IWebsocketRoute[],
+		incomingMessage: IncomingMessage,
+		baselineWebsocketServer: Socket.Server,
+		duplexSocket: DuplexSocket,
+		upgradeHeader: Buffer,
+	) {
+		let isValid = false;
+		clientRouteMaps.forEach((clientRouteMap) => {
+			isValid = SystemSDK.CheckDoesWebsocketRouteExistAndDispatchConnection(
+				incomingMessage,
+				clientRouteMap,
+				baselineWebsocketServer,
+				duplexSocket,
+				upgradeHeader,
+			);
+		});
+		if (!isValid) {
+			duplexSocket.write('HTTP/1.1 404 Socket Not Found\r\n\r\n');
+			duplexSocket.destroy();
+		}
+	}
+
+	private static GetWebsocketRouteAndInvokeCallback(
+		clientRouteMaps: IWebsocketRoute[],
+		incomingClientRequest: IncomingMessage,
+		client: Socket,
+	) {
+		clientRouteMaps.forEach((clientRouteMap) => {
+			if (incomingClientRequest.url.split('?').shift() === clientRouteMap.Route) {
+				return clientRouteMap.Callback(client, incomingClientRequest);
+			}
+		});
+	}
+
+	private static ExtractWebsocketRoutes(dirname: string, options: IWebsocketOptions): string[] {
+		try {
+			return Walkers.WalkDirectory(dirname);
+		} catch (ex) {
+			FASTLOG2(SFLog[options.apiName], '[SFLog::%s] %s', options.apiName, ex.message);
+			return null;
+		}
+	}
+
+	private static ExtractWebsocketClientRouteMaps(
+		rootDirectory: string,
+		webSocketRoutes: string[],
+		options: IWebsocketOptions,
+		errorFunction: (reason?: any) => void,
+	) {
+		const clientRouteMaps: IWebsocketRoute[] = [];
+		webSocketRoutes.forEach((route) => {
+			let name = route.split('\\').join('/');
+			name = name.replace(rootDirectory, '');
+			if (name.match(/.+\.js/)) {
+				name = name.replace('.js', '');
+				name = name.split('_P-').join(':');
+				name = name.split('\\').join('/');
+				if (name === '/__pageIndex') name = '/';
+				let clientMap: {
+					default: IWebsocketRoute;
+				};
+
+				try {
+					clientMap = require(rootDirectory + name);
+				} catch (err) {
+					return console.error(err);
+				}
+
+				if (clientMap.default) {
+					if (!clientMap.default.Callback) return;
+					clientMap.default.Route = name;
+					FASTLOG3(SFLog[options.apiName], `[SFLog::%s] MAPPING WEBSOCKET wss://%s%s`, options.apiName, options.apiName, name);
+					clientRouteMaps.push(clientMap.default);
+				} else {
+					return errorFunction(`${name} had no default export.`);
+				}
+			}
+		});
+		return clientRouteMaps;
+	}
+
+	private static CheckDoesWebsocketRouteExistAndDispatchConnection(
+		incomingMessage: IncomingMessage,
+		clientRouteMap: IWebsocketRoute,
+		baselineSslWebsocketServer: Socket.Server,
+		duplexSocket: DuplexSocket,
+		upgradeHeader: Buffer,
+	) {
+		let isValid = false;
+		if (incomingMessage.url.split('?').shift() === clientRouteMap.Route) {
+			baselineSslWebsocketServer.handleUpgrade(
+				incomingMessage,
+				duplexSocket,
+				upgradeHeader,
+				(client: Socket, incomingClientMessage: IncomingMessage) => {
+					baselineSslWebsocketServer.emit('connection', client, incomingClientMessage);
+				},
+			);
+			isValid = true;
+		}
+		return isValid;
 	}
 
 	private static DefaultExceptionPage(app: IApplicationBuilder): void {

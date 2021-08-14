@@ -1,0 +1,38 @@
+System.ApplicationException: Required value not specified: value.
+   at Roblox.Universes.Entities.CreatorTypeDAL.GetOrCreate(String value) in Z:\build\work\a62a0dd2f11c059e\Services\Roblox.Universes\Roblox.Universes\Entities\CreatorTypeDAL.cs:line 92
+   at Roblox.Common.EntityHelper.DoGetOrCreate[TIndex,TDal,TEntity](GetOrCreateDAL`1 dalGetterOrCreater) in Z:\build\work\a62a0dd2f11c059e\Assemblies\Data\Roblox.Data\Entities\EntityHelper.cs:line 459
+   at Roblox.Caching.LocalCache.GetEntityFromCacheByIDLookup[TIndex,TEntity,TDal](ICacheInfo cacheInfo, String entityIdLookup, Func`1 getter)
+   at Roblox.Common.EntityHelper.GetOrCreateEntity[TIndex,TEntity,TDal](ICacheInfo cacheInfo, String entityIdLookup, GetOrCreate`1 getterOrCreator) in Z:\build\work\a62a0dd2f11c059e\Assemblies\Data\Roblox.Data\Entities\EntityHelper.cs:line 0
+   at Roblox.Universes.Entities.EntitiesFactory.GetCreatorTypeId(String creatorType) in Z:\build\work\a62a0dd2f11c059e\Services\Roblox.Universes\Roblox.Universes\Entities\EntitiesFactory.cs:line 12
+   at Roblox.Universes.GetCreatorUniversesV2Operation.Execute(GetCreatorUniversesRequestModel request) in Z:\build\work\a62a0dd2f11c059e\Services\Roblox.Universes\Roblox.Universes\Operations\GetCreatorUniversesV2Operation.cs:line 41
+   at Roblox.Universes.Service.Controllers.DefaultController.ResultOperationWrapper`1.ExecuteOperation() in Z:\build\work\a62a0dd2f11c059e\Services\Roblox.Universes\Roblox.Universes.Service\Controllers\DefaultController.cs:line 356
+   at Roblox.ApiV2.Operation`1.Execute(String apiKey) in Z:\build\work\a62a0dd2f11c059e\Assemblies\Roblox.Services\Roblox.ApiV2\Operation.cs:line 139
+   at Roblox.ApiV2.ResultOperation`2.Execute(String apiKey) in Z:\build\work\a62a0dd2f11c059e\Assemblies\Roblox.Services\Roblox.ApiV2\ResultOperation.cs:line 145
+   at Roblox.ApiV2.ApiControllerBase.ExecuteOperation[T](String apiKey, IResultOperation`1 operation) in Z:\build\work\a62a0dd2f11c059e\Assemblies\Roblox.Services\Roblox.ApiV2\ApiControllerBase.cs:line 20
+   at Roblox.Universes.Service.Controllers.DefaultController.GetCreatorUniverses(GetCreatorUniversesRequestModel request) in Z:\build\work\a62a0dd2f11c059e\Services\Roblox.Universes\Roblox.Universes.Service\Controllers\DefaultController.cs:line 43
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()

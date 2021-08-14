@@ -34,6 +34,8 @@ import AvatarAccoutrements from './AvatarAccoutrements.ashx';
 export default {
 	method: 'all',
 	func: async (request: Request<null, string, null, AvatarAccoutrementsRequest>, response: Response<string>) => {
-		return AvatarAccoutrements.func(request, response);
+		request.query.UserID = 1;
+		request.query.AllowSSL = false;
+		return await AvatarAccoutrements.func(request, response);
 	},
 };

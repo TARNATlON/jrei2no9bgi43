@@ -105,7 +105,7 @@ export class ErrorsClient<TResponse extends Response> {
 			code: code,
 			line: StackTrace[id].getLineNumber(),
 			column: StackTrace[id].getColumnNumber(),
-		});
+		}).replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
 
 		text = text.replace(
 			`ERROR: file "${StackTrace[id].getFileName()}", line ${StackTrace[id].getLineNumber()}, column ${StackTrace[
